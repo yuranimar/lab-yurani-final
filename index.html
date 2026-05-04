@@ -1,0 +1,4062 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Portafolio frontend de Yurani Martínez. Animaciones UI, GSAP, interfaces modernas y desarrollo web profesional.">
+
+<meta property="og:title" content="Yurani Martínez | Frontend Developer">
+<meta property="og:description" content="Laboratorio de efectos UI, animaciones y experiencias web modernas.">
+<meta property="og:image" content="./preview.jpg">
+<meta property="og:url" content="https://yuranimartinez.dev/">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Yurani Martínez | Frontend Developer">
+<meta name="twitter:description" content="Laboratorio de efectos UI, animaciones y experiencias web modernas.">
+<meta name="twitter:image" content="./preview.jpg">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💻</text></svg>">
+
+  <title>Laboratorio Frontend | Yurani Martínez</title>
+
+  <!-- FUENTES -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+
+  <!-- ICONOS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+  <!-- CSS -->
+  <link rel="stylesheet" href="css/styles.css">
+
+  <!-- ===== ESTILOS EXTRAS ===== -->
+  <style>
+
+    /* ====================================================
+       MODO CLARO — diseño cálido con profundidad y carácter
+    ==================================================== */
+
+    /* Paleta de colores claro */
+    :root {
+      --lc-bg0:      #f0f4f8;   /* fondo base */
+      --lc-bg1:      #ffffff;   /* cards principales */
+      --lc-bg2:      #e8eef5;   /* fondos alternos, sidebar */
+      --lc-bg3:      #dce5ef;   /* bordes suaves, hover */
+      --lc-text1:    #0f172a;   /* texto primario */
+      --lc-text2:    #334155;   /* texto secundario */
+      --lc-text3:    #64748b;   /* texto terciario / meta */
+      --lc-accent:   #0d9488;   /* teal vibrante — acento principal */
+      --lc-accent2:  #6366f1;   /* índigo — acento secundario */
+      --lc-border:   rgba(15,23,42,0.09);
+      --lc-shadow:   0 2px 16px rgba(15,23,42,0.08), 0 1px 3px rgba(15,23,42,0.06);
+      --lc-shadow-lg:0 8px 40px rgba(15,23,42,0.12), 0 2px 8px rgba(15,23,42,0.06);
+    }
+
+    [data-theme="light"] {
+      --fondo-base:       var(--lc-bg0);
+      --fondo-card:       var(--lc-bg1);
+      --fondo-sidebar:    var(--lc-bg2);
+      --fondo-header:     rgba(240,244,248,0.95);
+      --texto-primario:   var(--lc-text1);
+      --texto-secundario: var(--lc-text2);
+      --borde:            var(--lc-border);
+      --verde-400:        var(--lc-accent);
+      --acento:           var(--lc-accent);
+      --glass-bg:         rgba(255,255,255,0.75);
+      --glass-border:     var(--lc-border);
+    }
+
+    /* ─── BODY Y FONDO GENERAL ─── */
+    [data-theme="light"] body {
+      background: var(--lc-bg0);
+    }
+
+    /* ─── SECCIONES: fondos alternos para separar visualmente ─── */
+    [data-theme="light"] .effect-container {
+      background: var(--lc-bg0);
+    }
+    [data-theme="light"] .effect-container:nth-child(even) {
+      background: linear-gradient(180deg, #eaf1f8 0%, #f0f4f8 100%);
+    }
+    [data-theme="light"] .lab-article {
+      color: var(--lc-text1);
+    }
+    [data-theme="light"] .article-header h2 {
+      color: var(--lc-text1);
+    }
+    [data-theme="light"] .tech-stack {
+      color: var(--lc-text3);
+    }
+    [data-theme="light"] .impact-text {
+      color: var(--lc-text2);
+      background: rgba(13,148,136,0.07);
+      border-left: 3px solid var(--lc-accent);
+      padding: 10px 14px;
+      border-radius: 0 8px 8px 0;
+    }
+    [data-theme="light"] .use-case {
+      color: var(--lc-text2);
+    }
+    [data-theme="light"] .description {
+      color: var(--lc-text2);
+    }
+
+    /* ─── HERO ─── */
+    [data-theme="light"] .particles-hero {
+      background: linear-gradient(135deg, #dbeafe 0%, #d1fae5 50%, #ede9fe 100%);
+    }
+    [data-theme="light"] .hero-card.glass,
+    [data-theme="light"] .glass-card {
+      background: rgba(255,255,255,0.82);
+      border: 1px solid rgba(255,255,255,0.9);
+      backdrop-filter: blur(20px);
+      box-shadow: var(--lc-shadow-lg);
+      color: var(--lc-text1);
+    }
+    [data-theme="light"] .hero-card h1,
+    [data-theme="light"] .hero-card h2,
+    [data-theme="light"] .glass-card h2 { color: var(--lc-text1); }
+    [data-theme="light"] .hero-card p,
+    [data-theme="light"] .glass-card p  { color: var(--lc-text2); }
+
+    /* ─── CARDS ─── */
+    [data-theme="light"] .card-demo,
+    [data-theme="light"] .card-hover,
+    [data-theme="light"] .stack-item,
+    [data-theme="light"] .counter-card,
+    [data-theme="light"] .timeline-card,
+    [data-theme="light"] .theme-demo-card,
+    [data-theme="light"] .flip-front,
+    [data-theme="light"] .flip-back,
+    [data-theme="light"] .drag-item,
+    [data-theme="light"] .pricing-card,
+    [data-theme="light"] .portfolio-card,
+    [data-theme="light"] .form-card,
+    [data-theme="light"] .footer-card,
+    [data-theme="light"] .nodal-item,
+    [data-theme="light"] .estudio-item {
+      background: var(--lc-bg1);
+      border-color: var(--lc-border);
+      box-shadow: var(--lc-shadow);
+      color: var(--lc-text1);
+    }
+    [data-theme="light"] .card-demo:hover,
+    [data-theme="light"] .card-hover:hover,
+    [data-theme="light"] .stack-item:hover,
+    [data-theme="light"] .nodal-item:hover {
+      box-shadow: var(--lc-shadow-lg);
+      border-color: rgba(13,148,136,0.3);
+      transform: translateY(-2px);
+    }
+    [data-theme="light"] .card-demo h4,
+    [data-theme="light"] .card-hover h4,
+    [data-theme="light"] .stack-item span,
+    [data-theme="light"] .counter-card .counter-label,
+    [data-theme="light"] .timeline-card h4,
+    [data-theme="light"] .theme-demo-card h4,
+    [data-theme="light"] .pricing-card h3,
+    [data-theme="light"] .drag-item strong,
+    [data-theme="light"] .nodal-item strong { color: var(--lc-text1); }
+    [data-theme="light"] .card-demo p,
+    [data-theme="light"] .card-demo span,
+    [data-theme="light"] .card-hover p,
+    [data-theme="light"] .stack-item small,
+    [data-theme="light"] .counter-card .counter-desc,
+    [data-theme="light"] .timeline-card p,
+    [data-theme="light"] .theme-demo-card p,
+    [data-theme="light"] .pricing-card .pricing-desc,
+    [data-theme="light"] .drag-item small,
+    [data-theme="light"] .nodal-item small { color: var(--lc-text3); }
+
+    /* Canvas areas */
+    [data-theme="light"] .canvas-area {
+      background: var(--lc-bg1);
+      border: 1px solid var(--lc-border);
+      box-shadow: var(--lc-shadow);
+    }
+
+    /* ─── BOTONES ─── */
+    [data-theme="light"] .btn-demo {
+      background: var(--lc-bg1);
+      color: var(--lc-text1);
+      border: 1px solid var(--lc-border);
+      box-shadow: var(--lc-shadow);
+    }
+    [data-theme="light"] .btn-demo:hover {
+      background: var(--lc-bg2);
+      border-color: rgba(13,148,136,0.35);
+      color: var(--lc-accent);
+    }
+    [data-theme="light"] .btn-main {
+      background: linear-gradient(135deg, var(--lc-accent) 0%, #0f766e 100%);
+      box-shadow: 0 4px 16px rgba(13,148,136,0.35);
+    }
+
+    /* ─── SIDEBAR ─── */
+    [data-theme="light"] .sidebar {
+      background: var(--lc-bg2);
+      border-right: 1px solid var(--lc-border);
+    }
+    [data-theme="light"] .side-nav a { color: var(--lc-text2); }
+    [data-theme="light"] .side-nav a:hover,
+    [data-theme="light"] .side-nav a.active {
+      background: rgba(13,148,136,0.10);
+      color: var(--lc-accent);
+    }
+    [data-theme="light"] .nav-title { color: var(--lc-text2); }
+    [data-theme="light"] .nav-title:hover { background: rgba(15,23,42,0.04); }
+
+    /* ─── HEADER ─── */
+    [data-theme="light"] .main-header {
+      background: rgba(240,244,248,0.96);
+      border-bottom: 1px solid var(--lc-border);
+      backdrop-filter: blur(12px);
+    }
+    [data-theme="light"] .logo { color: var(--lc-text1); }
+    [data-theme="light"] .logo span { color: var(--lc-accent); }
+    [data-theme="light"] .status-dot { background: var(--lc-accent); box-shadow: 0 0 8px var(--lc-accent); }
+    [data-theme="light"] .theme-toggle {
+      background: var(--lc-bg1);
+      border-color: var(--lc-border);
+      color: var(--lc-text2);
+      box-shadow: var(--lc-shadow);
+    }
+    [data-theme="light"] .hamburger span { background: var(--lc-text1); }
+
+    /* ─── MOBILE MENU ─── */
+    [data-theme="light"] .mobile-menu { background: var(--lc-bg2); }
+    [data-theme="light"] .mobile-nav a {
+      color: var(--lc-text2);
+      border-bottom-color: var(--lc-border);
+    }
+    [data-theme="light"] .mobile-nav a:hover { color: var(--lc-accent); background: rgba(13,148,136,0.06); }
+
+    /* ─── SCROLL PROGRESS ─── */
+    [data-theme="light"] .scroll-progress {
+      background: linear-gradient(to right, var(--lc-accent), var(--lc-accent2));
+    }
+
+    /* ─── FORMS ─── */
+    [data-theme="light"] .form-input {
+      background: var(--lc-bg1);
+      color: var(--lc-text1);
+      border-color: #cbd5e1;
+    }
+    [data-theme="light"] .form-input:focus { border-color: var(--lc-accent); }
+    [data-theme="light"] .form-label { color: var(--lc-text3); }
+    [data-theme="light"] .form-demo-wrapper { background: var(--lc-bg1); }
+    [data-theme="light"] .form-card input,
+    [data-theme="light"] .form-card textarea,
+    [data-theme="light"] .form-card select {
+      background: var(--lc-bg0);
+      color: var(--lc-text1);
+      border-color: #cbd5e1;
+    }
+    [data-theme="light"] .form-card button {
+      background: linear-gradient(135deg, var(--lc-accent) 0%, #0f766e 100%);
+      color: #fff;
+    }
+    [data-theme="light"] .form-card h3 { color: var(--lc-text1); }
+    [data-theme="light"] .form-card .card-description { color: var(--lc-text3); }
+    [data-theme="light"] .use-tag {
+      background: rgba(13,148,136,0.10);
+      color: var(--lc-accent);
+      border: 1px solid rgba(13,148,136,0.2);
+    }
+
+    /* ─── CONTADORES ─── */
+    [data-theme="light"] .counter-number { color: var(--lc-accent); }
+    [data-theme="light"] .counter-suffix { color: var(--lc-accent); opacity: 0.8; }
+    [data-theme="light"] .counter-bar { background: var(--lc-bg3); }
+    [data-theme="light"] .counter-bar-fill { background: linear-gradient(90deg, var(--lc-accent), var(--lc-accent2)); }
+    [data-theme="light"] .counter-card.highlight {
+      background: linear-gradient(135deg, #d1fae5 0%, #e0f2fe 100%);
+      border-color: rgba(13,148,136,0.25);
+    }
+
+    /* ─── TIMELINE ─── */
+    [data-theme="light"] .timeline::before { background: var(--lc-bg3); }
+    [data-theme="light"] .timeline-dot { background: var(--lc-bg3); border-color: var(--lc-accent); }
+    [data-theme="light"] .timeline-dot.active { background: var(--lc-accent); }
+    [data-theme="light"] .timeline-date { color: var(--lc-accent); }
+    [data-theme="light"] .timeline-tags span {
+      background: rgba(13,148,136,0.08);
+      color: var(--lc-accent);
+      border: 1px solid rgba(13,148,136,0.2);
+    }
+    [data-theme="light"] .timeline-card.highlight {
+      background: linear-gradient(135deg, #d1fae5 0%, #e0f2fe 100%);
+      border-color: rgba(13,148,136,0.3);
+    }
+
+    /* ─── GALERÍA ─── */
+    [data-theme="light"] .gallery-item {
+      background: var(--lc-bg1);
+      border-color: var(--lc-border);
+      box-shadow: var(--lc-shadow);
+    }
+    [data-theme="light"] .gallery-thumb { background: linear-gradient(135deg, var(--lc-bg2), var(--lc-bg3)); }
+    [data-theme="light"] .gallery-caption { color: var(--lc-text2); }
+
+    /* ─── PORTAFOLIO ─── */
+    [data-theme="light"] .portfolio-info h4 { color: var(--lc-text1); }
+    [data-theme="light"] .portfolio-info p  { color: var(--lc-text3); }
+    [data-theme="light"] .portfolio-note { color: var(--lc-text3); }
+    [data-theme="light"] .portfolio-thumb { background: linear-gradient(135deg, #dbeafe 0%, #d1fae5 100%); }
+
+    /* ─── STACK ─── */
+    [data-theme="light"] .stack-grid { }
+    [data-theme="light"] .stack-item.featured {
+      background: linear-gradient(135deg, #d1fae5 0%, #e0f2fe 100%);
+      border-color: rgba(13,148,136,0.3);
+    }
+    [data-theme="light"] .stack-item i { color: var(--lc-accent); }
+    [data-theme="light"] .stack-note { color: var(--lc-text3); }
+
+    /* ─── SCRAMBLE ─── */
+    [data-theme="light"] .scramble-text {
+      color: var(--lc-text1);
+      text-shadow: none;
+    }
+    [data-theme="light"] .scramble-demo { background: var(--lc-bg0); }
+
+    /* ─── MARQUEE ─── */
+    [data-theme="light"] .marquee-track { background: var(--lc-bg1); border-color: var(--lc-border); }
+    [data-theme="light"] .marquee-inner span { color: var(--lc-text2); }
+    [data-theme="light"] .marquee-inner .sep { color: var(--lc-accent); }
+
+    /* ─── DRAG ─── */
+    [data-theme="light"] .drag-list { background: var(--lc-bg0); }
+    [data-theme="light"] .drag-tag { background: rgba(239,68,68,0.08); color: #dc2626; border-color: rgba(239,68,68,0.2); }
+    [data-theme="light"] .drag-tag--blue { background: rgba(59,130,246,0.08); color: #2563eb; border-color: rgba(59,130,246,0.2); }
+    [data-theme="light"] .drag-tag--purple { background: rgba(99,102,241,0.08); color: #4f46e5; border-color: rgba(99,102,241,0.2); }
+    [data-theme="light"] .drag-tag--green { background: rgba(13,148,136,0.08); color: var(--lc-accent); border-color: rgba(13,148,136,0.2); }
+
+    /* ─── CÓDIGO ─── */
+    [data-theme="light"] .code-block,
+    [data-theme="light"] pre,
+    [data-theme="light"] code,
+    [data-theme="light"] .code-editor { background: #1e293b; color: #e2e8f0; }
+
+    /* ─── SECTION HEADERS ─── */
+    [data-theme="light"] .section-header h2 { color: var(--lc-text1); }
+    [data-theme="light"] .section-header p,
+    [data-theme="light"] .subtitle { color: var(--lc-text3); }
+    [data-theme="light"] .footer-group-label { color: var(--lc-text2); }
+
+    /* ─── SERVICIOS / PRICING ─── */
+    [data-theme="light"] .pricing-card.featured {
+      background: linear-gradient(135deg, #d1fae5 0%, #e0f2fe 100%);
+      border-color: rgba(13,148,136,0.3);
+      box-shadow: 0 8px 32px rgba(13,148,136,0.18);
+    }
+    [data-theme="light"] .badge-featured {
+      background: var(--lc-accent);
+      color: #fff;
+    }
+    [data-theme="light"] .pricing-features li { color: var(--lc-text2); }
+    [data-theme="light"] .services-note { color: var(--lc-text3); }
+
+    /* ─── BADGE ─── */
+    [data-theme="light"] .badge {
+      background: rgba(13,148,136,0.10);
+      color: var(--lc-accent);
+      border: 1px solid rgba(13,148,136,0.22);
+    }
+
+    /* ─── SKELETON ─── */
+    [data-theme="light"] .skeleton-card { background: var(--lc-bg1); border-color: var(--lc-border); box-shadow: var(--lc-shadow); }
+    [data-theme="light"] .shimmer {
+      background: linear-gradient(90deg, var(--lc-bg2) 25%, var(--lc-bg3) 50%, var(--lc-bg2) 75%);
+      background-size: 200% 100%;
+    }
+    [data-theme="light"] .loaded-card { background: var(--lc-bg1); }
+    [data-theme="light"] .loaded-thumb { background: linear-gradient(135deg, var(--lc-bg2), var(--lc-bg3)); color: var(--lc-accent); }
+
+    /* ─── NODAL CASOS DE USO ─── */
+    [data-theme="light"] .use-case-nodal {
+      background: rgba(13,148,136,0.04);
+      border-color: rgba(13,148,136,0.18);
+    }
+    [data-theme="light"] .nodal-title { color: var(--lc-accent); }
+    [data-theme="light"] .nodal-benefit { color: var(--lc-text3); border-top-color: rgba(13,148,136,0.15); }
+    [data-theme="light"] .nodal-benefit strong { color: var(--lc-accent); }
+
+    /* ─── GLITCH ─── */
+    [data-theme="light"] .glitch-wrapper { background: var(--lc-bg0); }
+    [data-theme="light"] .glitch { color: var(--lc-text1); }
+    [data-theme="light"] .glitch::before { color: var(--lc-accent); }
+    [data-theme="light"] .glitch::after { color: var(--lc-accent2); }
+
+    /* ─── FLIP CARDS ─── */
+    [data-theme="light"] .flip-front i { color: var(--lc-accent); }
+    [data-theme="light"] .flip-back { background: linear-gradient(135deg, var(--lc-accent) 0%, #0f766e 100%); color: #fff; }
+    [data-theme="light"] .flip-back h4,
+    [data-theme="light"] .flip-back p,
+    [data-theme="light"] .flip-level { color: rgba(255,255,255,0.9); }
+
+    /* ─── NEON — suavizar en claro ─── */
+    [data-theme="light"] .neon-text {
+      text-shadow: 0 0 6px rgba(13,148,136,0.5), 0 0 12px rgba(13,148,136,0.25);
+    }
+
+    /* ─── PIN & REVEAL ─── */
+    [data-theme="light"] .pin-screen { background: var(--lc-bg1); border-color: var(--lc-border); box-shadow: var(--lc-shadow-lg); }
+    [data-theme="light"] .pin-step { color: var(--lc-text1); }
+    [data-theme="light"] .pin-step h4 { color: var(--lc-text1); }
+    [data-theme="light"] .pin-step p { color: var(--lc-text3); }
+    [data-theme="light"] .pin-step-num { color: var(--lc-accent); }
+
+    /* ─── SVG PATH ─── */
+    [data-theme="light"] .path-label { color: var(--lc-text1); }
+    [data-theme="light"] .path-step { background: var(--lc-accent); color: #fff; }
+
+    /* ─── LIQUID BUTTONS ─── */
+    [data-theme="light"] .liquid-btn--outline { border-color: var(--lc-accent); color: var(--lc-accent); }
+    [data-theme="light"] .liquid-btn--ghost { color: var(--lc-text2); border-color: var(--lc-border); }
+
+    /* ─── MODAL ─── */
+    [data-theme="light"] .premium-modal-box {
+      background: var(--lc-bg1);
+      border-color: var(--lc-border);
+      box-shadow: var(--lc-shadow-lg);
+      color: var(--lc-text1);
+    }
+
+    /* ─── ESTUDIOS ─── */
+    [data-theme="light"] .estudio-label { color: var(--lc-accent); }
+    [data-theme="light"] .estudio-header h4 { color: var(--lc-text1); }
+    [data-theme="light"] .estudio-body p { color: var(--lc-text2); }
+
+    /* ─── FOOTER SHOWCASE ─── */
+    [data-theme="light"] .footer-showcase { background: var(--lc-bg0); }
+    [data-theme="light"] .footer-minimal,
+    [data-theme="light"] .footer-premium,
+    [data-theme="light"] .footer-newsletter,
+    [data-theme="light"] .footer-corporate,
+    [data-theme="light"] .footer-app {
+      background: var(--lc-bg1);
+      color: var(--lc-text1);
+    }
+    [data-theme="light"] .footer-card h3,
+    [data-theme="light"] .footer-card h4 { color: var(--lc-text1); }
+    [data-theme="light"] .footer-card p,
+    [data-theme="light"] .footer-card a { color: var(--lc-text2); }
+    [data-theme="light"] .footer-card a:hover { color: var(--lc-accent); }
+    [data-theme="light"] .footer-bottom { color: var(--lc-text3); border-top-color: var(--lc-border); }
+
+    /* ─── VAR FONT ─── */
+    [data-theme="light"] .varfont-demo { color: var(--lc-text1); }
+
+    /* ─── THEME DEMO CARDS ─── */
+    [data-theme="light"] .theme-live-demo { background: var(--lc-bg0); border-color: var(--lc-border); }
+    [data-theme="light"] .theme-hint { color: var(--lc-text3); }
+    [data-theme="light"] .theme-demo-card i { color: var(--lc-accent); }
+
+    /* ─── SCROLL PROGRESS BAR ─── */
+    [data-theme="light"] .scroll-progress {
+      background: linear-gradient(to right, var(--lc-accent), var(--lc-accent2));
+    }
+
+    /* ====================================================
+       NAV FLOTANTE DE SECCIONES
+    ==================================================== */
+    #quick-nav {
+      position: fixed;
+      bottom: 80px;
+      right: 20px;
+      z-index: 999;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      align-items: flex-end;
+    }
+
+    #quick-nav-toggle {
+      background: var(--acento, #10b981);
+      color: #fff;
+      border: none;
+      border-radius: 50px;
+      padding: 10px 16px;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      box-shadow: 0 4px 20px rgba(16,185,129,0.35);
+      transition: background 0.2s, transform 0.2s;
+      white-space: nowrap;
+    }
+    #quick-nav-toggle:hover { transform: translateY(-2px); }
+
+    #quick-nav-panel {
+      background: var(--fondo-card, #1e293b);
+      border: 1px solid var(--borde, rgba(255,255,255,0.1));
+      border-radius: 14px;
+      padding: 14px 12px;
+      display: none;
+      flex-direction: column;
+      gap: 2px;
+      max-height: 70vh;
+      overflow-y: auto;
+      box-shadow: 0 8px 40px rgba(0,0,0,0.3);
+      min-width: 200px;
+    }
+    #quick-nav-panel.open { display: flex; }
+
+    .qnav-group-title {
+      font-size: 10px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--verde-400, #34d399);
+      padding: 8px 10px 4px;
+      margin-top: 4px;
+    }
+    .qnav-group-title:first-child { margin-top: 0; }
+
+    #quick-nav-panel a {
+      color: var(--texto-secundario, #94a3b8);
+      text-decoration: none;
+      font-size: 12.5px;
+      padding: 6px 10px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      transition: background 0.15s, color 0.15s;
+    }
+    #quick-nav-panel a:hover {
+      background: rgba(16,185,129,0.12);
+      color: var(--verde-400, #34d399);
+    }
+    #quick-nav-panel a i { font-size: 13px; width: 16px; }
+
+    [data-theme="light"] #quick-nav-panel {
+      background: #ffffff;
+      border-color: rgba(0,0,0,0.10);
+      box-shadow: 0 8px 40px rgba(0,0,0,0.12);
+    }
+    [data-theme="light"] #quick-nav-panel a {
+      color: #475569;
+    }
+    [data-theme="light"] #quick-nav-panel a:hover {
+      color: #059669;
+      background: rgba(5,150,105,0.08);
+    }
+    [data-theme="light"] .qnav-group-title {
+      color: #059669;
+    }
+
+    @media (max-width: 768px) {
+      #quick-nav { bottom: 70px; right: 12px; }
+      #quick-nav-panel { max-height: 60vh; }
+    }
+
+  </style>
+
+  <!-- ===== ESTILOS NODAL CASOS DE USO ===== -->
+  <style>
+    /* === BLOQUE NODAL BASE === */
+    .use-case-nodal {
+      margin-top: 20px;
+      padding: 20px;
+      border: 1px solid rgba(16, 185, 129, 0.2);
+      border-radius: 14px;
+      background: rgba(16, 185, 129, 0.04);
+      backdrop-filter: blur(4px);
+    }
+
+    .use-case-nodal--glass {
+      background: rgba(255, 255, 255, 0.05);
+      border-color: rgba(255, 255, 255, 0.15);
+    }
+
+    .nodal-title {
+      font-size: 11px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--verde-400, #34d399);
+      margin-bottom: 14px;
+    }
+
+    /* === GRID DE NODOS === */
+    .nodal-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+      gap: 10px;
+      margin-bottom: 14px;
+    }
+
+    .nodal-item {
+      background: rgba(16, 185, 129, 0.07);
+      border: 1px solid rgba(16, 185, 129, 0.15);
+      border-radius: 10px;
+      padding: 12px 14px;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      transition: background 0.2s, border-color 0.2s, transform 0.2s;
+    }
+
+    .nodal-item:hover {
+      background: rgba(16, 185, 129, 0.12);
+      border-color: rgba(16, 185, 129, 0.35);
+      transform: translateY(-2px);
+    }
+
+    .nodal-icon {
+      font-size: 18px;
+      line-height: 1;
+      margin-bottom: 2px;
+    }
+
+    .nodal-item strong {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--texto-primario, #f1f5f9);
+      line-height: 1.3;
+    }
+
+    .nodal-item small {
+      font-size: 11.5px;
+      color: var(--texto-secundario, #94a3b8);
+      line-height: 1.5;
+    }
+
+    /* === BENEFICIO === */
+    .nodal-benefit {
+      font-size: 12.5px;
+      color: var(--texto-secundario, #94a3b8);
+      border-top: 1px solid rgba(16, 185, 129, 0.15);
+      padding-top: 12px;
+      line-height: 1.6;
+    }
+
+    .nodal-benefit strong {
+      color: var(--verde-400, #34d399);
+    }
+
+    /* === Modo claro === */
+    [data-theme="light"] .use-case-nodal {
+      background: rgba(16, 185, 129, 0.05);
+      border-color: rgba(16, 185, 129, 0.2);
+    }
+
+    [data-theme="light"] .nodal-item {
+      background: rgba(16, 185, 129, 0.06);
+      border-color: rgba(16, 185, 129, 0.18);
+    }
+
+    [data-theme="light"] .nodal-item:hover {
+      background: rgba(16, 185, 129, 0.12);
+      border-color: rgba(16, 185, 129, 0.3);
+    }
+
+    [data-theme="light"] .nodal-item strong {
+      color: #0f172a;
+    }
+
+    [data-theme="light"] .nodal-item small {
+      color: #475569;
+    }
+
+    [data-theme="light"] .nodal-benefit {
+      color: #475569;
+    }
+
+    /* === Responsive === */
+    @media (max-width: 600px) {
+      .nodal-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+    @media (max-width: 380px) {
+      .nodal-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<!-- ================= PAGE LOADER ================= -->
+<div id="loader">
+  <div class="loader-content">
+    <p class="loader-name">Yurani <span>Lab</span></p>
+    <div class="loader-bar"><div class="loader-fill"></div></div>
+    <p class="loader-label">Cargando experiencia...</p>
+  </div>
+</div>
+
+<!-- ================= SCROLL PROGRESS ================= -->
+<div class="scroll-progress" id="scrollProgress"></div>
+
+
+
+<!-- ================= HEADER ================= -->
+<header class="main-header">
+  <div class="logo">
+    <i class="bi bi-terminal-fill"></i> Lab<span>Frontend</span>
+  </div>
+  <div class="header-controls">
+    <div class="status-dot"></div>
+    <button class="theme-toggle" id="themeToggle" data-theme-toggle title="Cambiar tema">
+      <i class="bi bi-sun-fill" id="themeIcon"></i>
+    </button>
+    <button class="hamburger" id="hamburger" aria-label="Menú" aria-expanded="false" aria-controls="mobileMenu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </div>
+</header>
+
+<!-- ================= MENÚ MÓVIL ================= -->
+<div class="mobile-menu" id="mobileMenu" role="dialog" aria-label="Menú de navegación" aria-modal="true">
+  <!-- Botón cerrar -->
+  <button class="mobile-menu-close" id="mobileMenuClose" onclick="closeMobileMenu()" aria-label="Cerrar menú">
+    <i class="bi bi-x-lg"></i>
+  </button>
+  <nav class="mobile-nav">
+
+    <a href="#hero" onclick="closeMobileMenu()"><i class="bi bi-house-door"></i> Inicio · Home</a>
+    <a href="#sesion-1" onclick="closeMobileMenu()"><i class="bi bi-eye"></i> Entrada · Entrance</a>
+    <a href="#hero-particles" onclick="closeMobileMenu()"><i class="bi bi-stars"></i> Partículas · Particles</a>
+    <a href="#sesion-2" onclick="closeMobileMenu()"><i class="bi bi-arrow-down-up"></i> Scroll Reveal</a>
+    <a href="#sesion-3" onclick="closeMobileMenu()"><i class="bi bi-hand-index"></i> Microinteracciones</a>
+    <a href="#sesion-tema" onclick="closeMobileMenu()"><i class="bi bi-circle-half"></i> Tema · Dark Mode</a>
+    <a href="#sesion-contadores" onclick="closeMobileMenu()"><i class="bi bi-123"></i> Contadores · Counters</a>
+    <a href="#sesion-timeline" onclick="closeMobileMenu()"><i class="bi bi-clock-history"></i> Línea de tiempo · Timeline</a>
+    <a href="#sesion-form" onclick="closeMobileMenu()"><i class="bi bi-envelope"></i> Formulario · Form</a>
+    <a href="#sesion-galeria" onclick="closeMobileMenu()"><i class="bi bi-images"></i> Galería · Lightbox</a>
+    <a href="#sesion-glitch" onclick="closeMobileMenu()"><i class="bi bi-bug"></i> Glitch</a>
+    <a href="#sesion-parallax" onclick="closeMobileMenu()"><i class="bi bi-layers"></i> Paralaje · Parallax</a>
+    <a href="#sesion-tilt" onclick="closeMobileMenu()"><i class="bi bi-box"></i> Inclinación · 3D Tilt</a>
+    <a href="#sesion-flip" onclick="closeMobileMenu()"><i class="bi bi-arrow-repeat"></i> Voltear · Flip 3D</a>
+    <a href="#sesion-codigo" onclick="closeMobileMenu()"><i class="bi bi-code-slash"></i> Código · Live Code</a>
+    <a href="#sesion-hscroll" onclick="closeMobileMenu()"><i class="bi bi-arrows-angle-expand"></i> Scroll Horizontal</a>
+    <a href="#sesion-svgpath" onclick="closeMobileMenu()"><i class="bi bi-bezier2"></i> Trazo · SVG Path</a>
+    <a href="#sesion-pin" onclick="closeMobileMenu()"><i class="bi bi-pin-angle"></i> Fijar · Pin & Reveal</a>
+    <a href="#sesion-scramble" onclick="closeMobileMenu()"><i class="bi bi-type"></i> Descifrar · Scramble</a>
+    <a href="#sesion-marquee" onclick="closeMobileMenu()"><i class="bi bi-text-paragraph"></i> Banda · Marquee</a>
+    <a href="#sesion-drag" onclick="closeMobileMenu()"><i class="bi bi-arrows-move"></i> Arrastrar · Drag & Drop</a>
+    <a href="#sesion-varfont" onclick="closeMobileMenu()"><i class="bi bi-fonts"></i> Tipografía · Var Fonts</a>
+    <a href="#sesion-neon" onclick="closeMobileMenu()"><i class="bi bi-lightbulb"></i> Neón · Neon Glow</a>
+    <a href="#sesion-trail" onclick="closeMobileMenu()"><i class="bi bi-mouse"></i> Estela · Cursor Trail</a>
+    <a href="#sesion-skeleton" onclick="closeMobileMenu()"><i class="bi bi-layout-text-window"></i> Esqueleto · Skeleton</a>
+    <a href="#sesion-liquid" onclick="closeMobileMenu()"><i class="bi bi-droplet"></i> Líquido · Liquid Blob</a>
+    <a href="#sesion-modal" onclick="closeMobileMenu()"><i class="bi bi-window"></i> Modal Premium</a>
+    <a href="#stack" onclick="closeMobileMenu()"><i class="bi bi-stack"></i> Tecnologías · Stack</a>
+    <a href="#portafolio" onclick="closeMobileMenu()"><i class="bi bi-briefcase"></i> Portafolio · Portfolio</a>
+    <a href="#servicios" onclick="closeMobileMenu()"><i class="bi bi-gear"></i> Servicios · Services</a>
+    <a href="#sesion-formularios" onclick="closeMobileMenu()"><i class="bi bi-ui-checks"></i> Lab de Forms</a>
+    <a href="#lab-footers" onclick="closeMobileMenu()"><i class="bi bi-layout-bottom"></i> Lab de Footers</a>
+
+  </nav>
+</div>
+
+
+<!-- ================= SIDEBAR ================= -->
+<div class="app-container">
+<aside class="sidebar">
+  <nav class="side-nav">
+
+    <!-- INTRO -->
+    <div class="nav-group open">
+      <button class="nav-title" aria-expanded="true">
+        <span><i class="bi bi-rocket-takeoff"></i> Introducción</span>
+      </button>
+      <ul>
+        <li><a href="#hero" class="active"><i class="bi bi-house"></i> Inicio · Home</a></li>
+        <li><a href="#sesion-1"><i class="bi bi-eye"></i> Entrada · Entrance</a></li>
+        <li><a href="#hero-particles"><i class="bi bi-stars"></i> Partículas · Particles</a></li>
+        <li><a href="#sesion-2"><i class="bi bi-arrow-down-up"></i> Scroll Reveal</a></li>
+      </ul>
+    </div>
+
+    <!-- INTERACCIONES -->
+    <div class="nav-group">
+      <button class="nav-title" aria-expanded="false">
+        <span><i class="bi bi-cursor-fill"></i> Interacciones · Interactions</span>
+      </button>
+      <ul>
+        <li><a href="#sesion-3"><i class="bi bi-hand-index"></i> Microinteracciones</a></li>
+        <li><a href="#sesion-tilt"><i class="bi bi-box"></i> Inclinación · 3D Tilt</a></li>
+        <li><a href="#sesion-drag"><i class="bi bi-arrows-move"></i> Arrastrar · Drag & Drop</a></li>
+        <li><a href="#sesion-trail"><i class="bi bi-mouse"></i> Estela · Cursor Trail</a></li>
+      </ul>
+    </div>
+
+    <!-- ANIMACIONES -->
+    <div class="nav-group">
+      <button class="nav-title" aria-expanded="false">
+        <span><i class="bi bi-lightning-charge-fill"></i> Animaciones · Animations</span>
+      </button>
+      <ul>
+        <li><a href="#sesion-parallax"><i class="bi bi-layers"></i> Paralaje · Parallax</a></li>
+        <li><a href="#sesion-hscroll"><i class="bi bi-arrows-angle-expand"></i> Scroll Horizontal</a></li>
+        <li><a href="#sesion-svgpath"><i class="bi bi-bezier2"></i> Trazo · SVG Path</a></li>
+        <li><a href="#sesion-pin"><i class="bi bi-pin-angle"></i> Fijar · Pin & Reveal</a></li>
+        <li><a href="#sesion-scramble"><i class="bi bi-type"></i> Descifrar · Scramble</a></li>
+        <li><a href="#sesion-marquee"><i class="bi bi-text-paragraph"></i> Banda · Marquee</a></li>
+      </ul>
+    </div>
+
+    <!-- VISUALES -->
+    <div class="nav-group">
+      <button class="nav-title" aria-expanded="false">
+        <span><i class="bi bi-palette-fill"></i> Visuales · Visuals</span>
+      </button>
+      <ul>
+        <li><a href="#sesion-glitch"><i class="bi bi-bug"></i> Glitch</a></li>
+        <li><a href="#sesion-flip"><i class="bi bi-arrow-repeat"></i> Voltear · Flip 3D</a></li>
+        <li><a href="#sesion-varfont"><i class="bi bi-fonts"></i> Tipografía · Var Fonts</a></li>
+        <li><a href="#sesion-neon"><i class="bi bi-lightbulb"></i> Neón · Neon Glow</a></li>
+        <li><a href="#sesion-liquid"><i class="bi bi-droplet"></i> Líquido · Liquid Blob</a></li>
+      </ul>
+    </div>
+
+    <!-- UI / UX -->
+    <div class="nav-group">
+      <button class="nav-title" aria-expanded="false">
+        <span><i class="bi bi-grid-fill"></i> UI / UX</span>
+      </button>
+      <ul>
+        <li><a href="#sesion-tema"><i class="bi bi-circle-half"></i> Tema · Dark Mode</a></li>
+        <li><a href="#sesion-contadores"><i class="bi bi-123"></i> Contadores · Counters</a></li>
+        <li><a href="#sesion-timeline"><i class="bi bi-clock-history"></i> Línea de tiempo · Timeline</a></li>
+        <li><a href="#sesion-form"><i class="bi bi-envelope"></i> Formulario · Form</a></li>
+        <li><a href="#sesion-galeria"><i class="bi bi-images"></i> Galería · Lightbox</a></li>
+        <li><a href="#sesion-skeleton"><i class="bi bi-layout-text-window"></i> Esqueleto · Skeleton</a></li>
+        <li><a href="#sesion-modal"><i class="bi bi-window"></i> Modal Premium</a></li>
+      </ul>
+    </div>
+
+    <!-- CONTENIDO -->
+    <div class="nav-group">
+      <button class="nav-title" aria-expanded="false">
+        <span><i class="bi bi-box-seam"></i> Contenido · Content</span>
+      </button>
+      <ul>
+        <li><a href="#stack"><i class="bi bi-stack"></i> Tecnologías · Stack</a></li>
+        <li><a href="#sesion-codigo"><i class="bi bi-code-slash"></i> Código · Live Code</a></li>
+        <li><a href="#portafolio"><i class="bi bi-briefcase"></i> Portafolio · Portfolio</a></li>
+        <li><a href="#servicios"><i class="bi bi-gear"></i> Servicios · Services</a></li>
+        <li><a href="#sesion-formularios"><i class="bi bi-input-cursor-text"></i> Lab de Forms</a></li>
+        <li><a href="#sesion-typewriter"><i class="bi bi-keyboard"></i> Typewriter</a></li>
+        <li><a href="#sesion-ripple"><i class="bi bi-fullscreen"></i> Ripple · Click</a></li>
+        <li><a href="#sesion-colorpicker"><i class="bi bi-palette"></i> Color Picker</a></li>
+        <li><a href="#sesion-charts"><i class="bi bi-bar-chart"></i> Gráficas · Charts</a></li>
+        <li><a href="#sesion-cookie"><i class="bi bi-shield-check"></i> Cookie Banner</a></li>
+        <li><a href="#sesion-notifs"><i class="bi bi-bell"></i> Notificaciones</a></li>
+        <li><a href="#lab-footers"><i class="bi bi-layout-bottom"></i> Lab de Footers</a></li>
+      </ul>
+    </div>
+
+  </nav>
+</aside>
+
+  <main>
+    <!-- ================= HERO ================= -->
+    <section id="hero" class="particles-hero">
+
+      <article class="hero-card glass">
+
+        <span class="badge reveal-stagger">Laboratorio Frontend · Yurani Martínez</span>
+
+       <h1 class="reveal-stagger">
+  <span id="typewriter"></span><span class="cursor-type">|</span><br>
+  <span class="accent">experiencias web modernas desde cero</span>
+</h1>
+
+<p class="reveal-stagger">
+  Explora efectos reales que puedo implementar en tu sitio: animaciones, interacción y diseño que captan la atención y mejoran la experiencia del usuario.
+</p>
+
+<button class="btn-main reveal-stagger"
+  onclick="document.getElementById('sesion-1').scrollIntoView({behavior:'smooth'})">
+  Explorar laboratorio
+</button>
+
+      </article>
+
+    </section>
+
+   <!-- ================= ENTRADA VISUAL ================= -->
+<section id="sesion-1" class="effect-container">
+
+  <article class="lab-article">
+
+    <header class="article-header">
+      <h2>Animación de entrada · Entrance Animation</h2>
+      <p class="tech-stack">GSAP · power3.out · stagger reveal</p>
+
+      <!-- 💡 FRASE DE IMPACTO -->
+      <p class="impact-text">
+        💡 Captura la atención del usuario desde el primer segundo y mejora la primera impresión de tu sitio.
+      </p>
+    </header>
+
+    <div class="canvas-area split">
+
+      <div class="demo-info">
+        <h3 class="reveal-text">Los elementos aparecen de forma progresiva</h3>
+
+        <p class="reveal-text">
+          Cada elemento entra con un retardo escalonado usando <strong>stagger</strong>, guiando la mirada del usuario de forma natural.
+        </p>
+
+        <p class="reveal-text">
+          Este tipo de animación se utiliza en landing pages modernas para dirigir la atención hacia el contenido clave.
+        </p>
+
+        <!-- 💼 CASO DE USO -->
+        <p class="use-case">
+          🎯 Ideal para: landing pages, portafolios y páginas de venta
+        </p>
+
+        <!-- NODAL CASOS DE USO -->
+        <div class="use-case-nodal">
+          <p class="nodal-title">¿En qué tipo de negocio aplica?</p>
+          <div class="nodal-grid">
+            <div class="nodal-item">
+              <span class="nodal-icon">🛍️</span>
+              <strong>Tienda online</strong>
+              <small>Los productos aparecen uno a uno guiando la compra</small>
+            </div>
+            <div class="nodal-item">
+              <span class="nodal-icon">💼</span>
+              <strong>Portafolio</strong>
+              <small>Causa impacto visual desde el primer segundo de carga</small>
+            </div>
+            <div class="nodal-item">
+              <span class="nodal-icon">🎤</span>
+              <strong>Eventos y lanzamientos</strong>
+              <small>Genera expectativa con entradas escalonadas y dinámicas</small>
+            </div>
+            <div class="nodal-item">
+              <span class="nodal-icon">🏢</span>
+              <strong>Servicios profesionales</strong>
+              <small>Transmite seriedad y calidad premium desde el hero</small>
+            </div>
+          </div>
+          <p class="nodal-benefit">✅ <strong>Resultado:</strong> El usuario percibe el sitio como más moderno y profesional. Aumenta el tiempo en página y reduce el rebote.</p>
+        </div>
+
+      </div>
+
+      <div class="demo-visual">
+        <div class="geometry-icon">
+          <i class="bi bi-box"></i>
+        </div>
+      </div>
+
+    </div>
+
+  </article>
+
+</section>
+
+   <!-- ================= PARTÍCULAS ================= -->
+<section id="hero-particles" class="effect-container particles-hero">
+
+  <div id="particles-js"></div>
+
+  <article class="hero-card glass">
+
+    <span class="badge">Fondo interactivo con partículas</span>
+
+    <h2 class="reveal-text">Partículas Interactivas · Interactive Particles</h2>
+
+    <!-- 💡 FRASE DE IMPACTO -->
+    <p class="impact-text">
+      💡 Genera impacto visual inmediato y hace que tu sitio se sienta moderno e interactivo.
+    </p>
+
+    <p class="reveal-text">
+      Fondo dinámico de partículas que responde al movimiento del cursor, creando una experiencia envolvente desde el primer momento.
+    </p>
+
+    <!-- 💼 CASO DE USO -->
+    <p class="use-case">
+      🎯 Ideal para: landing pages, portadas de marca y sitios creativos
+    </p>
+
+    <!-- NODAL CASOS DE USO -->
+    <div class="use-case-nodal use-case-nodal--glass">
+      <p class="nodal-title">¿En qué tipo de negocio aplica?</p>
+      <div class="nodal-grid">
+        <div class="nodal-item">
+          <span class="nodal-icon">💻</span>
+          <strong>Empresa tech o software</strong>
+          <small>Proyecta innovación y capacidad técnica sin mostrar código</small>
+        </div>
+        <div class="nodal-item">
+          <span class="nodal-icon">🎨</span>
+          <strong>Agencia creativa</strong>
+          <small>Se diferencia visualmente de competidores con fondos estáticos</small>
+        </div>
+        <div class="nodal-item">
+          <span class="nodal-icon">📱</span>
+          <strong>Landing de app móvil</strong>
+          <small>Crea atmósfera inmersiva que anticipa la experiencia del producto</small>
+        </div>
+        <div class="nodal-item">
+          <span class="nodal-icon">✨</span>
+          <strong>Marca personal o estudio</strong>
+          <small>Genera una primera impresión de alta calidad sin imágenes pesadas</small>
+        </div>
+      </div>
+      <p class="nodal-benefit">✅ <strong>Resultado:</strong> Primera impresión de alta calidad técnica. Los visitantes recuerdan el sitio por su efecto visual único.</p>
+    </div>
+
+  </article>
+
+</section>
+ <!-- ================= SCROLL REVEAL ================= -->
+<section id="sesion-2" class="effect-container">
+
+  <article class="lab-article">
+
+    <!-- HEADER -->
+    <header class="article-header">
+      <h2>Animaciones al hacer Scroll · Scroll Reveal</h2>
+
+      <p class="tech-stack">
+        GSAP ScrollTrigger · fromTo · stagger
+      </p>
+
+      <p class="impact-text">
+        💡 Dirige la mirada del usuario paso a paso hacia el contenido más importante de tu página.
+      </p>
+
+      <p class="description">
+        Los elementos aparecen progresivamente al hacer scroll, combinando opacidad, desplazamiento y escala para crear una experiencia fluida.
+      </p>
+
+      <p class="use-case">
+        🎯 Ideal para: páginas de venta, storytelling y presentación de productos
+      </p>
+
+      <!-- NODAL CASOS DE USO -->
+      <div class="use-case-nodal">
+        <p class="nodal-title">¿En qué tipo de negocio aplica?</p>
+        <div class="nodal-grid">
+          <div class="nodal-item">
+            <span class="nodal-icon">🛒</span>
+            <strong>E-commerce</strong>
+            <small>Cada producto aparece al hacer scroll, guiando al usuario hacia el CTA de compra</small>
+          </div>
+          <div class="nodal-item">
+            <span class="nodal-icon">🏥</span>
+            <strong>Clínicas y consultoras</strong>
+            <small>Los servicios se revelan paso a paso para facilitar la comprensión</small>
+          </div>
+          <div class="nodal-item">
+            <span class="nodal-icon">📖</span>
+            <strong>Storytelling de marca</strong>
+            <small>La historia de la empresa se narra visualmente al bajar en la página</small>
+          </div>
+          <div class="nodal-item">
+            <span class="nodal-icon">🚀</span>
+            <strong>SaaS y apps</strong>
+            <small>Las características del producto se presentan una a una con impacto</small>
+          </div>
+        </div>
+        <p class="nodal-benefit">✅ <strong>Resultado:</strong> Guía al usuario a leer todo el contenido en orden. Aumenta tiempo en página y comprensión del mensaje.</p>
+      </div>
+    </header>
+
+    <!-- CONTENIDO -->
+    <div class="canvas-area scroll-container">
+
+      <!-- ELEMENTO DECORATIVO -->
+      <div class="bg-element" aria-hidden="true"></div>
+
+      <!-- GRID DE TARJETAS -->
+      <div class="cards-grid">
+
+        <div class="card-demo">
+          <i class="bi bi-lightning-charge-fill"></i>
+          <span>Aparición suave con opacidad y desplazamiento</span>
+        </div>
+
+        <div class="card-demo">
+          <i class="bi bi-layers-fill"></i>
+          <span>Activación automática al entrar en pantalla</span>
+        </div>
+
+        <div class="card-demo">
+          <i class="bi bi-stars"></i>
+          <span>Animación progresiva que guía la lectura</span>
+        </div>
+
+      </div>
+
+      <!-- BOTÓN -->
+      <div class="btn-container">
+        <button class="btn-demo" type="button">
+          Explorar este efecto en acción
+        </button>
+      </div>
+
+      <!-- SCROLLYTELLING -->
+      <div class="story-wrapper" style="margin-top:40px;position:relative;">
+        <div class="story-steps" style="display:flex;flex-direction:column;gap:48px;">
+          <div class="story-step" data-caption="✨ El usuario llega y lo primero que ve aparece con suavidad — nada de saltos bruscos." style="padding:20px 0;">
+            <div class="card-demo" style="margin:0;"><i class="bi bi-eye-fill"></i><span>1. Primera impresión suave</span></div>
+          </div>
+          <div class="story-step" data-caption="🎯 Cada elemento aparece cuando toca — el scroll controla el ritmo narrativo." style="padding:20px 0;">
+            <div class="card-demo" style="margin:0;"><i class="bi bi-arrow-down-circle-fill"></i><span>2. Aparición dirigida por scroll</span></div>
+          </div>
+          <div class="story-step" data-caption="💡 El usuario llega al CTA con contexto completo — conversión más natural y efectiva." style="padding:20px 0;">
+            <div class="card-demo" style="margin:0;"><i class="bi bi-check-circle-fill"></i><span>3. CTA con contexto completo</span></div>
+          </div>
+        </div>
+        <div id="story-caption" style="margin-top:24px;padding:16px 20px;background:rgba(16,185,129,0.08);border:1px solid rgba(16,185,129,0.2);border-radius:12px;font-size:14px;color:var(--texto-secundario);min-height:52px;transition:opacity 0.3s;">Haz scroll para activar el storytelling ↓</div>
+      </div>
+
+    </div>
+
+  </article>
+
+</section>
+
+    <!-- ================= MICROINTERACCIONES ================= -->
+   <section id="sesion-3" class="effect-container">
+
+  <article class="lab-article">
+
+    <header class="article-header">
+      <h2>Microinteracciones · Micro-interactions</h2>
+      <p class="tech-stack">GSAP hover · scale · overwrite auto</p>
+
+      <!-- 💡 FRASE DE IMPACTO -->
+      <p class="impact-text">
+        💡 Hace que cada interacción se sienta fluida, natural y agradable para el usuario.
+      </p>
+
+      <p class="tech-stack">
+        Pequeñas animaciones que responden al movimiento del cursor, mejorando la percepción de calidad y dinamismo del sitio.
+      </p>
+
+      <!-- 💼 CASO DE USO -->
+      <p class="use-case">
+        🎯 Ideal para: botones, tarjetas interactivas y interfaces modernas
+      </p>
+
+      <!-- NODAL CASOS DE USO -->
+      <div class="use-case-nodal">
+        <p class="nodal-title">¿En qué tipo de negocio aplica?</p>
+        <div class="nodal-grid">
+          <div class="nodal-item">
+            <span class="nodal-icon">🛍️</span>
+            <strong>Tienda online</strong>
+            <small>Los botones "Agregar al carrito" responden al cursor, generando más clics</small>
+          </div>
+          <div class="nodal-item">
+            <span class="nodal-icon">🧭</span>
+            <strong>Navegación web</strong>
+            <small>El menú se siente fluido y natural, mejorando la orientación del usuario</small>
+          </div>
+          <div class="nodal-item">
+            <span class="nodal-icon">📦</span>
+            <strong>Catálogos de servicios</strong>
+            <small>Las tarjetas responden al hover haciendo el contenido más atractivo de explorar</small>
+          </div>
+          <div class="nodal-item">
+            <span class="nodal-icon">📝</span>
+            <strong>Formularios de contacto</strong>
+            <small>Los campos dan feedback visual inmediato, reduciendo errores de usuario</small>
+          </div>
+        </div>
+        <p class="nodal-benefit">✅ <strong>Resultado:</strong> El sitio se siente "vivo" y bien cuidado. Los usuarios hacen más clic en elementos que responden visualmente.</p>
+      </div>
+    </header>
+
+    <div class="canvas-area">
+
+      <div class="card-hover">
+        <h4><i class="bi bi-cursor-fill"></i> Interacción suave al pasar el cursor</h4>
+        <p>
+          Los elementos reaccionan con animaciones fluidas que responden al usuario sin cortes ni movimientos bruscos.
+        </p>
+      </div>
+
+      <div class="card-hover">
+        <h4><i class="bi bi-hand-index-thumb-fill"></i> Respuesta rápida y sin interrupciones</h4>
+        <p>
+          Incluso con movimientos rápidos, la animación se adapta en tiempo real manteniendo una experiencia continua.
+        </p>
+      </div>
+
+      <!-- 🔘 BOTÓN DEMO -->
+      <button class="btn-demo">
+        Probar interacción
+      </button>
+
+    </div>
+
+  </article>
+
+</section>
+
+<!-- ================= STACK ================= -->
+<section id="stack" class="effect-container">
+
+  <article class="lab-article">
+
+    <!-- HEADER MEJORADO -->
+    <header class="article-header">
+      <h2>Tecnologías · Tech Stack</h2>
+      <p class="tech-stack">
+        No solo uso herramientas — construyo interfaces modernas, animadas y enfocadas en experiencia de usuario.
+      </p>
+    </header>
+
+    <!-- GRID -->
+    <div class="stack-grid">
+
+      <div class="stack-item">
+        <i class="bi bi-filetype-html"></i>
+        <span>HTML5</span>
+        <small>Estructura semántica y accesible</small>
+      </div>
+
+      <div class="stack-item">
+        <i class="bi bi-filetype-css"></i>
+        <span>CSS3</span>
+        <small>Layouts modernos, animaciones y responsive</small>
+      </div>
+
+      <div class="stack-item">
+        <i class="bi bi-filetype-js"></i>
+        <span>JavaScript</span>
+        <small>Interactividad y lógica de interfaz</small>
+      </div>
+
+      <div class="stack-item featured">
+        <i class="bi bi-lightning-charge-fill"></i>
+        <span>GSAP</span>
+        <small>Animaciones profesionales de alto rendimiento</small>
+      </div>
+
+      <div class="stack-item">
+        <i class="bi bi-phone-fill"></i>
+        <span>Responsive</span>
+        <small>Adaptación perfecta a móvil y tablet</small>
+      </div>
+
+      <div class="stack-item">
+        <i class="bi bi-vector-pen"></i>
+        <span>Figma</span>
+        <small>Diseño UI/UX y prototipado</small>
+      </div>
+
+      <div class="stack-item">
+        <i class="bi bi-github"></i>
+        <span>GitHub</span>
+        <small>Control de versiones y despliegue</small>
+      </div>
+
+      <div class="stack-item">
+        <i class="bi bi-grid-1x2-fill"></i>
+        <span>UI/UX</span>
+        <small>Experiencias intuitivas y atractivas</small>
+      </div>
+
+    </div>
+
+    <!-- FRASE DE VALOR -->
+    <p class="stack-note">
+      Cada tecnología aquí está aplicada en este mismo laboratorio. No es teoría — es ejecución real.
+    </p>
+
+  </article>
+
+</section>
+<!-- ================= SOBRE MÍ ================= -->
+<section id="sobre-mi" class="effect-container particles-hero sobre-mi-section">
+
+  <!-- FONDO: fallback CSS siempre visible, Vanta lo cubre si carga -->
+  <div class="sobre-mi-fallback" id="sobre-mi-fallback" aria-hidden="true"></div>
+  <div id="vanta-canvas" style="position:absolute; inset:0; width:100%; height:100%; z-index:1;"></div>
+
+  <!-- CONTENIDO -->
+  <div style="position:relative; z-index:2; width:100%; display:flex; justify-content:center; align-items:center; padding:40px 20px; min-height:100vh;">
+    <div style="max-width:620px; width:100%;">
+
+      <div class="glass-card" style="padding:48px 40px; text-align:center;">
+
+        <h2 style="font-size:clamp(22px,4vw,36px); font-weight:800; margin-bottom:16px;">
+          Sobre mí · About Me
+        </h2>
+
+        <p style="font-size:16px; color:var(--texto-secundario); margin-bottom:16px; line-height:1.7;">
+          Soy tecnóloga en desarrollo de software especializada en frontend.
+          Me enfoco en crear interfaces modernas, rápidas y animadas que captan
+          la atención del usuario y mejoran la interacción con cada proyecto.
+        </p>
+
+        <p style="font-size:14px; color:var(--texto-secundario); margin-bottom:24px;">
+          No solo construyo páginas — desarrollo experiencias digitales que comunican, guían y convierten.
+        </p>
+
+        <div style="display:flex; flex-wrap:wrap; justify-content:center; gap:10px; margin-bottom:28px;">
+          <span class="badge">Frontend</span>
+          <span class="badge">UI/UX</span>
+          <span class="badge">Animaciones GSAP</span>
+          <span class="badge">Creative Coding</span>
+        </div>
+
+        <button class="btn-main" onclick="document.getElementById('servicios').scrollIntoView({behavior:'smooth'})">
+          Ver lo que puedo hacer
+          <i class="bi bi-arrow-down"></i>
+        </button>
+
+      </div>
+
+    </div>
+  </div>
+
+</section>
+
+    <!-- ================= LO QUE HAGO ================= -->
+<section id="servicios" class="effect-container">
+
+  <article class="lab-article">
+
+    <!-- HEADER -->
+    <header class="article-header">
+      <h2>Servicios · Services</h2>
+      <p class="tech-stack">
+        Diseño y desarrollo interfaces modernas, animadas y enfocadas en captar atención y generar resultados.
+      </p>
+    </header>
+
+    <!-- CARDS -->
+    <div class="pricing-grid">
+
+      <!-- 1 -->
+      <div class="pricing-card">
+        <h3><i class="bi bi-window"></i> Landing Page de Alto Impacto</h3>
+
+        <p class="pricing-desc">
+          Ideal para presentar tu negocio o producto con una experiencia visual que guía al usuario hacia la acción.
+        </p>
+
+        <ul class="pricing-features">
+          <li>✔ Animaciones al scroll (GSAP)</li>
+          <li>✔ Hero con partículas o efectos visuales</li>
+          <li>✔ Diseño responsive</li>
+        </ul>
+
+        <button class="btn-demo" onclick="openModal('Landing Page de Alto Impacto')">
+          Quiero esta landing
+        </button>
+      </div>
+
+      <!-- 2 DESTACADO -->
+      <div class="pricing-card featured">
+        <span class="badge-featured">Más solicitado</span>
+
+        <h3><i class="bi bi-cpu"></i> Web Interactiva Premium</h3>
+
+        <p class="pricing-desc">
+          Experiencia completa con animaciones avanzadas que hacen que tu sitio destaque y retenga usuarios.
+        </p>
+
+        <ul class="pricing-features">
+          <li>✔ GSAP + ScrollTrigger</li>
+          <li>✔ Microinteracciones avanzadas</li>
+          <li>✔ Diseño moderno tipo portafolio o marca</li>
+        </ul>
+
+        <button class="btn-demo" onclick="openModal('Web Interactiva Premium')">
+          Quiero algo así
+        </button>
+      </div>
+
+      <!-- 3 -->
+      <div class="pricing-card">
+        <h3><i class="bi bi-layers"></i> UI a Medida</h3>
+
+        <p class="pricing-desc">
+          Desarrollo componentes y secciones específicas adaptadas a tu proyecto o diseño existente.
+        </p>
+
+        <ul class="pricing-features">
+          <li>✔ Componentes animados</li>
+          <li>✔ Integración en proyectos existentes</li>
+          <li>✔ Optimización visual y UX</li>
+        </ul>
+
+        <button class="btn-demo" onclick="openModal('UI a Medida')">
+          Mejorar mi interfaz
+        </button>
+      </div>
+
+    </div>
+
+    <!-- CIERRE -->
+    <p class="services-note">
+      Cada proyecto se adapta a tus necesidades. Hablemos y construimos algo único.
+    </p>
+
+  </article>
+
+</section>
+
+<!-- ================= PORTAFOLIO ================= -->
+<section id="portafolio" class="effect-container">
+  <article class="lab-article">
+
+    <!-- HEADER -->
+    <header class="article-header">
+      <h2>Portafolio · Portfolio</h2>
+      <p class="tech-stack">
+        Cada proyecto muestra cómo transformar una idea en una interfaz moderna, funcional y enfocada en resultados.
+      </p>
+    </header>
+
+    <!-- SCROLL HORIZONTAL -->
+    <div class="portfolio-track-wrapper">
+      <div class="portfolio-track">
+
+        <!-- PROYECTO 1 -->
+        <div class="portfolio-card" data-index="0">
+          <div class="portfolio-thumb">
+            <i class="bi bi-laptop"></i>
+
+            <div class="portfolio-overlay">
+              <span class="portfolio-tag">HTML · CSS · GSAP</span>
+
+              <p class="portfolio-mini">
+                Laboratorio interactivo que demuestra múltiples efectos UI en tiempo real.
+              </p>
+
+              <button class="portfolio-btn-expand" data-index="0">
+                Ver detalles <i class="bi bi-arrow-right"></i>
+              </button>
+            </div>
+          </div>
+
+          <div class="portfolio-info">
+            <h4>Catálogo de Efectos UI</h4>
+            <p>Demostración técnica de animaciones y microinteracciones</p>
+          </div>
+        </div>
+
+        <!-- PROYECTO 2 -->
+        <div class="portfolio-card" data-index="1">
+          <div class="portfolio-thumb">
+            <i class="bi bi-shop"></i>
+
+            <div class="portfolio-overlay">
+              <span class="portfolio-tag">JavaScript · ScrollTrigger</span>
+
+              <p class="portfolio-mini">
+                Landing diseñada para guiar al usuario hasta la conversión.
+              </p>
+
+              <button class="portfolio-btn-expand" data-index="1">
+                Ver caso <i class="bi bi-arrow-right"></i>
+              </button>
+            </div>
+          </div>
+
+          <div class="portfolio-info">
+            <h4>Landing E-commerce</h4>
+            <p>Optimización de interacción y conversión</p>
+          </div>
+        </div>
+
+        <!-- PROYECTO 3 -->
+        <div class="portfolio-card" data-index="2">
+          <div class="portfolio-thumb">
+            <i class="bi bi-bar-chart-line"></i>
+
+            <div class="portfolio-overlay">
+              <span class="portfolio-tag">GSAP · Canvas</span>
+
+              <p class="portfolio-mini">
+                Visualización de datos dinámica para mejorar la comprensión del usuario.
+              </p>
+
+              <button class="portfolio-btn-expand" data-index="2">
+                Explorar <i class="bi bi-arrow-right"></i>
+              </button>
+            </div>
+          </div>
+
+          <div class="portfolio-info">
+            <h4>Dashboard Interactivo</h4>
+            <p>Datos animados y experiencia visual clara</p>
+          </div>
+        </div>
+
+        <!-- PROYECTO 4 -->
+        <div class="portfolio-card" data-index="3">
+          <div class="portfolio-thumb">
+            <i class="bi bi-phone"></i>
+
+            <div class="portfolio-overlay">
+              <span class="portfolio-tag">CSS · Parallax</span>
+
+              <p class="portfolio-mini">
+                Presentación de app con profundidad visual y scroll dinámico.
+              </p>
+
+              <button class="portfolio-btn-expand" data-index="3">
+                Ver experiencia <i class="bi bi-arrow-right"></i>
+              </button>
+            </div>
+          </div>
+
+          <div class="portfolio-info">
+            <h4>App Móvil Landing</h4>
+            <p>Experiencia moderna con efectos de scroll</p>
+          </div>
+        </div>
+
+        <!-- PROYECTO 5 -->
+        <div class="portfolio-card" data-index="4">
+          <div class="portfolio-thumb">
+            <i class="bi bi-camera"></i>
+
+            <div class="portfolio-overlay">
+              <span class="portfolio-tag">GSAP · Lenis</span>
+
+              <p class="portfolio-mini">
+                Galería con scroll suave y enfoque visual en imágenes.
+              </p>
+
+              <button class="portfolio-btn-expand" data-index="4">
+                Ver demo <i class="bi bi-arrow-right"></i>
+              </button>
+            </div>
+          </div>
+
+          <div class="portfolio-info">
+            <h4>Portafolio Fotógrafo</h4>
+            <p>Experiencia inmersiva centrada en contenido visual</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- CIERRE -->
+    <p class="portfolio-note">
+      Cada uno de estos proyectos puede adaptarse a tu idea o negocio. 
+      Si tienes algo en mente, podemos construirlo juntos.
+    </p>
+
+  </article>
+</section>
+
+   <!-- ================= CASOS DE ESTUDIO ================= -->
+<section id="sesion-estudios" class="effect-container">
+  <article class="lab-article">
+    <header class="article-header">
+      <h2>Casos de Estudio · Case Studies</h2>
+    </header>
+<div class="estudios-grid">
+
+  <!-- PROYECTO 1 -->
+  <div class="estudio-card" data-study="0">
+    <div class="estudio-header">
+      <div class="estudio-icon"><i class="bi bi-laptop"></i></div>
+      <div>
+        <h4>Catálogo de Efectos UI</h4>
+        <span class="tech-stack">HTML · CSS · GSAP</span>
+      </div>
+      <i class="bi bi-chevron-down estudio-chevron"></i>
+    </div>
+
+    <div class="estudio-body">
+      <div class="estudio-content">
+
+        <div class="estudio-col">
+          <p class="estudio-label">Problema</p>
+          <p>
+            Un portafolio tradicional no transmite realmente el nivel técnico ni la experiencia interactiva.
+          </p>
+        </div>
+
+        <div class="estudio-col">
+          <p class="estudio-label">Solución</p>
+          <p>
+            Se creó un laboratorio interactivo donde cada sección demuestra visualmente una habilidad específica.
+          </p>
+        </div>
+
+        <div class="estudio-col">
+          <p class="estudio-label">Resultado</p>
+          <p>
+            Portafolio dinámico que evidencia habilidades reales, mejora la retención del usuario y genera mayor impacto visual.
+          </p>
+        </div>
+
+        <div class="estudio-links">
+          <a href="https://github.com/yuranimartinez/lab" target="_blank" rel="noopener" class="btn-estudio" aria-label="Ver código en GitHub">
+            <i class="bi bi-github"></i> Ver código
+          </a>
+          <a href="https://yuranimartinez.github.io/lab" target="_blank" rel="noopener" class="btn-estudio featured-link" aria-label="Ver demo en vivo">
+            <i class="bi bi-box-arrow-up-right"></i> Ver demo
+          </a>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- PROYECTO 2 -->
+  <div class="estudio-card" data-study="1">
+    <div class="estudio-header">
+      <div class="estudio-icon"><i class="bi bi-shop"></i></div>
+      <div>
+        <h4>Landing E-commerce</h4>
+        <span class="tech-stack">JS · ScrollTrigger · CSS</span>
+      </div>
+      <i class="bi bi-chevron-down estudio-chevron"></i>
+    </div>
+
+    <div class="estudio-body">
+      <div class="estudio-content">
+
+        <div class="estudio-col">
+          <p class="estudio-label">Problema</p>
+          <p>
+            La página no guiaba al usuario, lo que provocaba baja interacción con el botón de compra.
+          </p>
+        </div>
+
+        <div class="estudio-col">
+          <p class="estudio-label">Solución</p>
+          <p>
+            Implementación de animaciones scroll reveal que dirigen la atención hacia el CTA principal.
+          </p>
+        </div>
+
+        <div class="estudio-col">
+          <p class="estudio-label">Resultado</p>
+          <p>
+            Mejora en la experiencia del usuario y aumento en la probabilidad de conversión.
+          </p>
+        </div>
+
+        <div class="estudio-links">
+          <a href="https://github.com/yuranimartinez/lab" target="_blank" rel="noopener" class="btn-estudio" aria-label="Ver código en GitHub">
+            <i class="bi bi-github"></i> Ver código
+          </a>
+          <a href="https://yuranimartinez.github.io/lab" target="_blank" rel="noopener" class="btn-estudio featured-link" aria-label="Ver demo en vivo">
+            <i class="bi bi-box-arrow-up-right"></i> Ver demo
+          </a>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- PROYECTO 3 -->
+  <div class="estudio-card" data-study="2">
+    <div class="estudio-header">
+      <div class="estudio-icon"><i class="bi bi-bar-chart-line"></i></div>
+      <div>
+        <h4>Dashboard Interactivo</h4>
+        <span class="tech-stack">GSAP · Canvas · JS</span>
+      </div>
+      <i class="bi bi-chevron-down estudio-chevron"></i>
+    </div>
+
+    <div class="estudio-body">
+      <div class="estudio-content">
+
+        <div class="estudio-col">
+          <p class="estudio-label">Problema</p>
+          <p>
+            Los datos estáticos no transmitían dinamismo ni generaban confianza en la información.
+          </p>
+        </div>
+
+        <div class="estudio-col">
+          <p class="estudio-label">Solución</p>
+          <p>
+            Integración de animaciones con Canvas y contadores dinámicos activados por scroll.
+          </p>
+        </div>
+
+        <div class="estudio-col">
+          <p class="estudio-label">Resultado</p>
+          <p>
+            Visualización clara, moderna y dinámica que mejora la comprensión y percepción de valor.
+          </p>
+        </div>
+
+        <div class="estudio-links">
+          <a href="https://github.com/yuranimartinez/lab" target="_blank" rel="noopener" class="btn-estudio" aria-label="Ver código en GitHub">
+            <i class="bi bi-github"></i> Ver código
+          </a>
+          <a href="https://yuranimartinez.github.io/lab" target="_blank" rel="noopener" class="btn-estudio featured-link" aria-label="Ver demo en vivo">
+            <i class="bi bi-box-arrow-up-right"></i> Ver demo
+          </a>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+</div>
+  </article>
+</section>
+
+<!-- ================= SESIÓN TEMA ================= -->
+<section id="sesion-tema" class="effect-container">
+  <article class="lab-article">
+
+    <!-- HEADER MEJORADO -->
+    <header class="article-header">
+      <h2>Modo Claro / Oscuro · Dark / Light Mode</h2>
+      <p class="tech-stack">CSS Variables · localStorage · transición suave</p>
+      <p class="tech-stack">
+        Cambio de tema en tiempo real sin recargar la página, con persistencia automática para mejorar la experiencia del usuario.
+      </p>
+    </header>
+
+    <!-- GRID -->
+    <div class="theme-demo-grid">
+
+      <div class="theme-demo-card">
+        <i class="bi bi-moon-stars-fill"></i>
+        <h4>Modo Oscuro</h4>
+        <p>
+          Interfaz con fondo profundo y acentos vibrantes. Reduce fatiga visual y mejora la experiencia nocturna.
+        </p>
+      </div>
+
+      <div class="theme-demo-card">
+        <i class="bi bi-sun-fill"></i>
+        <h4>Modo Claro</h4>
+        <p>
+          Diseño limpio y legible, ideal para entornos iluminados y contenido informativo.
+        </p>
+      </div>
+
+      <div class="theme-demo-card">
+        <i class="bi bi-device-ssd-fill"></i>
+        <h4>Persistencia Inteligente</h4>
+        <p>
+          El sistema recuerda la preferencia del usuario usando <strong>localStorage</strong> y la aplica automáticamente.
+        </p>
+      </div>
+
+    </div>
+
+    <!-- DEMO -->
+    <div class="theme-live-demo">
+      <button class="btn-main" id="themeToggleDemo" onclick="document.getElementById('themeToggle').click()">
+        <i class="bi bi-circle-half"></i> Cambiar tema en vivo
+      </button>
+
+      <p class="theme-hint">
+        Prueba el cambio de tema y recarga la página para ver cómo se mantiene tu preferencia.
+      </p>
+    </div>
+
+  </article>
+</section>
+
+<!-- ================= CONTADORES ================= -->
+<section id="sesion-contadores" class="effect-container">
+  <article class="lab-article">
+
+    <!-- HEADER MEJORADO -->
+    <header class="article-header">
+      <h2>Contadores Animados · Animated Counters</h2>
+      <p class="tech-stack">GSAP · ScrollTrigger · animación progresiva</p>
+      <p class="tech-stack">
+        Estos indicadores muestran el nivel técnico, la experiencia práctica y el enfoque en rendimiento de cada proyecto.
+      </p>
+    </header>
+
+    <!-- GRID -->
+    <div class="counters-grid">
+
+      <div class="counter-card">
+        <div class="counter-top">
+          <span class="counter-number" data-target="10">0</span>
+          <span class="counter-suffix">+</span>
+        </div>
+        <p class="counter-label">Efectos desarrollados</p>
+        <p class="counter-desc">Animaciones reales implementadas desde cero</p>
+        <div class="counter-bar">
+          <div class="counter-bar-fill" style="--pct:100%"></div>
+        </div>
+      </div>
+
+      <div class="counter-card highlight">
+        <div class="counter-top">
+          <span class="counter-number" data-target="100">0</span>
+          <span class="counter-suffix">%</span>
+        </div>
+        <p class="counter-label">Código propio</p>
+        <p class="counter-desc">Sin plantillas, todo desarrollado a medida</p>
+        <div class="counter-bar">
+          <div class="counter-bar-fill" style="--pct:100%"></div>
+        </div>
+      </div>
+
+      <div class="counter-card">
+        <div class="counter-top">
+          <span class="counter-number" data-target="5">0</span>
+          <span class="counter-suffix">+</span>
+        </div>
+        <p class="counter-label">Proyectos construidos</p>
+        <p class="counter-desc">Aplicaciones funcionales con enfoque en UX</p>
+        <div class="counter-bar">
+          <div class="counter-bar-fill" style="--pct:60%"></div>
+        </div>
+      </div>
+
+      <div class="counter-card">
+        <div class="counter-top">
+          <span class="counter-number" data-target="60">0</span>
+          <span class="counter-suffix">fps</span>
+        </div>
+        <p class="counter-label">Rendimiento</p>
+        <p class="counter-desc">Animaciones fluidas optimizadas</p>
+        <div class="counter-bar">
+          <div class="counter-bar-fill" style="--pct:80%"></div>
+        </div>
+      </div>
+
+    </div>
+
+  </article>
+</section>
+
+<!-- ================= TIMELINE ================= -->
+<section id="sesion-timeline" class="effect-container">
+  <article class="lab-article">
+
+    <header class="article-header">
+      <h2>Línea de Tiempo · Timeline</h2>
+      <p class="tech-stack">GSAP · ScrollTrigger · Storytelling · UI Animations</p>
+      <p class="tech-stack">
+        Un recorrido visual por mi crecimiento en frontend, donde cada etapa refleja nuevas habilidades,
+        retos superados y evolución en la forma de construir experiencias digitales.
+      </p>
+    </header>
+
+    <div class="timeline">
+
+      <!-- ITEM 1 -->
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-date">2022</div>
+
+        <div class="timeline-card">
+          <h4>Fundamentos del desarrollo web</h4>
+          <p>
+            Inicio en HTML, CSS y JavaScript. Construcción de interfaces responsivas
+            y primeras animaciones usando CSS.
+          </p>
+
+          <div class="timeline-tags">
+            <span>HTML</span>
+            <span>CSS</span>
+            <span>Responsive</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- ITEM 2 -->
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-date">2023</div>
+
+        <div class="timeline-card">
+          <h4>Interactividad y animaciones avanzadas</h4>
+          <p>
+            Integración de GSAP y ScrollTrigger para crear interfaces dinámicas,
+            mejorando la experiencia del usuario con animaciones fluidas.
+          </p>
+
+          <div class="timeline-tags">
+            <span>GSAP</span>
+            <span>ScrollTrigger</span>
+            <span>UX</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- ITEM 3 -->
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-date">2024</div>
+
+        <div class="timeline-card">
+          <h4>Experiencia en proyectos reales</h4>
+          <p>
+            Desarrollo de landings, dashboards y portafolios con enfoque en rendimiento,
+            diseño moderno y resultados orientados al usuario.
+          </p>
+
+          <div class="timeline-tags">
+            <span>Clientes</span>
+            <span>Performance</span>
+            <span>UI/UX</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- ITEM 4 -->
+      <div class="timeline-item">
+        <div class="timeline-dot active"></div>
+        <div class="timeline-date">2025 →</div>
+
+        <div class="timeline-card highlight">
+          <h4>Laboratorio Frontend</h4>
+          <p>
+            Creación de este catálogo interactivo como vitrina técnica.
+            Exploración de microinteracciones, efectos visuales y experiencias inmersivas.
+          </p>
+
+          <div class="timeline-tags">
+            <span>Creative Dev</span>
+            <span>Animations</span>
+            <span>Experiencia</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </article>
+</section>
+
+<!-- ================= FORMULARIO ================= -->
+<section id="sesion-form" class="effect-container">
+  <article class="lab-article">
+
+    <header class="article-header">
+      <h2>Formulario de Contacto · Contact Form</h2>
+      <p class="tech-stack">UX Forms · Animaciones · Validación en tiempo real</p>
+      <p class="tech-stack">
+        Formulario optimizado para una experiencia fluida: feedback visual inmediato,
+        microinteracciones y transición de éxito sin recargar la página.
+      </p>
+    </header>
+
+    <div class="form-demo-wrapper">
+
+      <!-- FORM -->
+      <form class="form-demo" id="formDemo" novalidate>
+
+        <!-- NOMBRE -->
+        <div class="form-group">
+          <input type="text" id="f-nombre" class="form-input" placeholder=" " required>
+          <label for="f-nombre" class="form-label">Tu nombre</label>
+          <div class="form-line"></div>
+          <span class="form-error">Por favor ingresa tu nombre</span>
+        </div>
+
+        <!-- EMAIL -->
+        <div class="form-group">
+          <input type="email" id="f-email" class="form-input" placeholder=" " required>
+          <label for="f-email" class="form-label">Correo electrónico</label>
+          <div class="form-line"></div>
+          <span class="form-error">Ingresa un email válido</span>
+        </div>
+
+        <!-- SERVICIO -->
+        <div class="form-group">
+          <input type="text" id="f-servicio" class="form-input" placeholder=" ">
+          <label for="f-servicio" class="form-label">¿Qué necesitas?</label>
+          <div class="form-line"></div>
+        </div>
+
+        <!-- MENSAJE -->
+        <div class="form-group">
+          <textarea id="f-mensaje" class="form-input form-textarea" placeholder=" " required></textarea>
+          <label for="f-mensaje" class="form-label">Cuéntame sobre tu idea</label>
+          <div class="form-line"></div>
+          <span class="form-error">Escribe tu mensaje</span>
+        </div>
+
+        <!-- BOTÓN -->
+        <button type="submit" class="btn-main form-submit" id="formSubmit">
+          <span class="submit-text">Enviar mensaje</span>
+          <i class="bi bi-send-fill submit-icon"></i>
+        </button>
+
+      </form>
+
+      <!-- SUCCESS -->
+      <div class="form-success" id="formSuccess">
+        <i class="bi bi-check-circle-fill"></i>
+        <h4>¡Mensaje enviado!</h4>
+        <p>Gracias por escribirme. Te responderé pronto.</p>
+      </div>
+
+    </div>
+
+  </article>
+</section>
+
+<!-- ================= GALERÍA ================= -->
+<section id="sesion-galeria" class="effect-container">
+  <article class="lab-article">
+    <header class="article-header">
+      <h2>Galería con Lightbox · Lightbox Gallery</h2>
+      <p class="tech-stack">GSAP · CSS Grid · transición de imagen</p>
+      <p class="tech-stack">
+        Las tarjetas de la galería se expanden con animación GSAP al hacer clic,
+        mostrando el detalle completo sin salir de la página.
+      </p>
+    </header>
+    <div class="gallery-grid">
+
+      <div class="gallery-item" data-title="Efecto Partículas" data-desc="Red generativa de nodos y líneas con Canvas API. Reacciona al movimiento del cursor en tiempo real." data-tech="particles.js · Canvas · mousemove">
+        <div class="gallery-thumb"><i class="bi bi-circle-fill"></i></div>
+        <div class="gallery-caption"><span>Partículas</span><i class="bi bi-zoom-in"></i></div>
+      </div>
+
+      <div class="gallery-item" data-title="Scroll Reveal" data-desc="Elementos que aparecen al cruzar el viewport con fade, slide y escala animados de forma independiente." data-tech="GSAP · ScrollTrigger · stagger">
+        <div class="gallery-thumb"><i class="bi bi-eye-fill"></i></div>
+        <div class="gallery-caption"><span>Scroll Reveal</span><i class="bi bi-zoom-in"></i></div>
+      </div>
+
+      <div class="gallery-item" data-title="3D Tilt" data-desc="Tarjetas que rotan en los ejes X e Y siguiendo la posición del cursor, creando profundidad visual premium." data-tech="GSAP · rotateX · rotateY · perspective">
+        <div class="gallery-thumb"><i class="bi bi-box-fill"></i></div>
+        <div class="gallery-caption"><span>3D Tilt</span><i class="bi bi-zoom-in"></i></div>
+      </div>
+
+      <div class="gallery-item" data-title="Cursor Personalizado" data-desc="Dot + ring con lerp suave. El anillo reacciona al hover sobre elementos interactivos y al click." data-tech="requestAnimationFrame · GSAP · lerp">
+        <div class="gallery-thumb"><i class="bi bi-cursor-fill"></i></div>
+        <div class="gallery-caption"><span>Cursor</span><i class="bi bi-zoom-in"></i></div>
+      </div>
+
+      <div class="gallery-item" data-title="Parallax de Capas" data-desc="Múltiples fondos se desplazan a distintas velocidades al hacer scroll, generando una ilusión de profundidad 3D." data-tech="GSAP · scrub · múltiples velocidades">
+        <div class="gallery-thumb"><i class="bi bi-layers-fill"></i></div>
+        <div class="gallery-caption"><span>Parallax</span><i class="bi bi-zoom-in"></i></div>
+      </div>
+
+      <div class="gallery-item" data-title="Magnetic Buttons" data-desc="Los botones se atraen hacia el cursor cuando está cerca y regresan con elasticidad al salir." data-tech="GSAP · elastic.out · mousemove">
+        <div class="gallery-thumb"><i class="bi bi-magnet-fill"></i></div>
+        <div class="gallery-caption"><span>Magnetic</span><i class="bi bi-zoom-in"></i></div>
+      </div>
+
+    </div>
+  </article>
+</section>
+
+<!-- =================GALERIA CON LIGHTBOX ================= -->
+<div class="lightbox" id="lightbox">
+  <div class="lightbox-overlay"></div>
+  <div class="lightbox-panel">
+    <button class="lightbox-close" id="lightboxClose">
+      <i class="bi bi-x-lg"></i>
+    </button>
+    <div class="lightbox-preview">
+      <i class="bi bi-image" id="lightboxIcon"></i>
+    </div>
+    <div class="lightbox-info">
+      <h3 id="lightboxTitle"></h3>
+      <p id="lightboxDesc"></p>
+      <span class="tech-stack" id="lightboxTech"></span>
+    </div>
+  </div>
+</div>
+<!-- ================= GLITCH ================= -->
+<section id="sesion-glitch" class="effect-container">
+  <article class="lab-article">
+    <header class="article-header">
+      <h2>Efecto Glitch de Texto · Text Glitch Effect</h2>
+      <p class="tech-stack">CSS animations · clip-path · pseudo-elementos</p>
+      <p class="tech-stack">
+        Texto que se distorsiona con desplazamientos de color y cortes de clip-path. Sin JavaScript — puro CSS.
+        Ideal para títulos de impacto en sitios creativos o gaming.
+      </p>
+
+      <!-- NODAL CASOS DE USO -->
+      <div class="use-case-nodal">
+        <p class="nodal-title">¿En qué tipo de negocio aplica?</p>
+        <div class="nodal-grid">
+          <div class="nodal-item">
+            <span class="nodal-icon">🎮</span>
+            <strong>Videojuegos y eSports</strong>
+            <small>Transmite energía y carácter desde el título principal de la landing</small>
+          </div>
+          <div class="nodal-item">
+            <span class="nodal-icon">🎵</span>
+            <strong>Música y entretenimiento</strong>
+            <small>Artistas y eventos usan glitch para comunicar intensidad y originalidad</small>
+          </div>
+          <div class="nodal-item">
+            <span class="nodal-icon">👨‍💻</span>
+            <strong>Desarrolladores y hackers</strong>
+            <small>El efecto refuerza la identidad técnica y el estilo cyberpunk del perfil</small>
+          </div>
+          <div class="nodal-item">
+            <span class="nodal-icon">🎪</span>
+            <strong>Festivales y eventos digitales</strong>
+            <small>Diferencia visualmente el evento frente a comunicaciones corporativas aburridas</small>
+          </div>
+        </div>
+        <p class="nodal-benefit">✅ <strong>Resultado:</strong> Transmite carácter y energía de forma inmediata. Es imposible de pasar por alto y queda en la memoria.</p>
+      </div>
+    </header>
+    <div class="canvas-area">
+      <div class="glitch-wrapper">
+        <div class="glitch" data-text="FRONTEND">FRONTEND</div>
+        <div class="glitch" data-text="DEVELOPER">DEVELOPER</div>
+      </div>
+      <p style="color:var(--texto-secundario); font-size:13px; margin-top: 20px;">
+        100% CSS · sin JS · clip-path · pseudo-elementos ::before y ::after
+      </p>
+    </div>
+  </article>
+</section>
+
+<!-- ================= FLIP 3D ================= -->
+<section id="sesion-flip" class="effect-container">
+  <article class="lab-article">
+
+    <header class="article-header">
+      <h2>Tarjetas Interactivas 3D · 3D Flip Cards</h2>
+      <p class="tech-stack">
+        CSS perspective · rotateY · preserve-3d · hover interaction
+      </p>
+      <p class="tech-stack">
+        Tarjetas que revelan información al girar. Perfectas para mostrar habilidades,
+        servicios o perfiles de forma interactiva.
+      </p>
+
+      <!-- NODAL CASOS DE USO -->
+      <div class="use-case-nodal">
+        <p class="nodal-title">¿En qué tipo de negocio aplica?</p>
+        <div class="nodal-grid">
+          <div class="nodal-item">
+            <span class="nodal-icon">👩‍💼</span>
+            <strong>Sección de equipo</strong>
+            <small>Frente: foto y nombre · Reverso: cargo y descripción de la persona</small>
+          </div>
+          <div class="nodal-item">
+            <span class="nodal-icon">⚙️</span>
+            <strong>Catálogo de servicios</strong>
+            <small>Frente: nombre del servicio · Reverso: beneficios y precio</small>
+          </div>
+          <div class="nodal-item">
+            <span class="nodal-icon">🖼️</span>
+            <strong>Galería de productos</strong>
+            <small>Frente: imagen · Reverso: especificaciones y botón de compra</small>
+          </div>
+          <div class="nodal-item">
+            <span class="nodal-icon">🏆</span>
+            <strong>Habilidades y tecnologías</strong>
+            <small>Frente: ícono y nombre · Reverso: nivel de dominio y proyectos</small>
+          </div>
+        </div>
+        <p class="nodal-benefit">✅ <strong>Resultado:</strong> Permite mostrar el doble de información sin ocupar más espacio. El usuario explora con curiosidad.</p>
+      </div>
+    </header>
+
+    <div class="flip-grid">
+
+      <!-- CARD 1 -->
+      <div class="flip-card" tabindex="0" role="button" aria-label="Tarjeta de Animaciones, presiona Enter para girar">
+        <div class="flip-inner">
+
+          <div class="flip-front">
+            <i class="bi bi-lightning-charge-fill"></i>
+            <h4>Animaciones</h4>
+            <p>Hover para explorar</p>
+          </div>
+
+          <div class="flip-back">
+            <h4>GSAP Avanzado</h4>
+            <p>
+              Animaciones fluidas, controladas por timeline y optimizadas
+              para rendimiento en interfaces modernas.
+            </p>
+            <span class="flip-level">Nivel: Avanzado</span>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- CARD 2 -->
+      <div class="flip-card" tabindex="0" role="button" aria-label="Tarjeta de Estilos CSS, presiona Enter para girar">
+        <div class="flip-inner">
+
+          <div class="flip-front">
+            <i class="bi bi-filetype-css"></i>
+            <h4>Estilos</h4>
+            <p>Hover para explorar</p>
+          </div>
+
+          <div class="flip-back">
+            <h4>CSS Moderno</h4>
+            <p>
+              Uso de variables, grid, glassmorphism, animaciones
+              y efectos visuales sin depender de frameworks.
+            </p>
+            <span class="flip-level">Nivel: Avanzado</span>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- CARD 3 -->
+      <div class="flip-card" tabindex="0" role="button" aria-label="Tarjeta de Responsive, presiona Enter para girar">
+        <div class="flip-inner">
+
+          <div class="flip-front">
+            <i class="bi bi-phone-fill"></i>
+            <h4>Responsive</h4>
+            <p>Hover para explorar</p>
+          </div>
+
+          <div class="flip-back">
+            <h4>Diseño Adaptativo</h4>
+            <p>
+              Interfaces que se adaptan a móvil, tablet y desktop
+              con una experiencia consistente.
+            </p>
+            <span class="flip-level">Nivel: Sólido</span>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- CARD 4 -->
+      <div class="flip-card" tabindex="0" role="button" aria-label="Tarjeta de Experiencia UX, presiona Enter para girar">
+        <div class="flip-inner">
+
+          <div class="flip-front">
+            <i class="bi bi-vector-pen"></i>
+            <h4>Experiencia</h4>
+            <p>Hover para explorar</p>
+          </div>
+
+          <div class="flip-back">
+            <h4>UI / UX</h4>
+            <p>
+              Diseño centrado en el usuario con microinteracciones
+              que mejoran la usabilidad y engagement.
+            </p>
+            <span class="flip-level">Nivel: Intermedio</span>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+
+  </article>
+</section>
+
+<!-- ================= PARALLAX ================= -->
+<section id="sesion-parallax" class="effect-container">
+  <article class="lab-article">
+    <header class="article-header">
+      <h2>Parallax de Capas · Layered Parallax</h2>
+      <p class="tech-stack">GSAP · ScrollTrigger · scrub · múltiples velocidades</p>
+      <p class="impact-text">💡 Múltiples capas se desplazan a distintas velocidades, generando una ilusión de profundidad 3D sin necesidad de WebGL.</p>
+      <p class="use-case">🎯 Dónde se usa: <strong>Apple</strong>, <strong>Stripe</strong>, landings premium, portfolios de agencias top</p>
+
+      <!-- NODAL CASOS DE USO -->
+      <div class="use-case-nodal">
+        <p class="nodal-title">¿En qué tipo de negocio aplica?</p>
+        <div class="nodal-grid">
+          <div class="nodal-item">
+            <span class="nodal-icon">🏨</span>
+            <strong>Hoteles y turismo</strong>
+            <small>El destino cobra vida con profundidad visual que anticipa la experiencia</small>
+          </div>
+          <div class="nodal-item">
+            <span class="nodal-icon">👟</span>
+            <strong>Productos físicos premium</strong>
+            <small>Zapatillas, joyería o moda se presentan con cinématica de lujo</small>
+          </div>
+          <div class="nodal-item">
+            <span class="nodal-icon">🏛️</span>
+            <strong>Arquitectura e interiorismo</strong>
+            <small>Los proyectos se muestran con sensación de espacio y profundidad real</small>
+          </div>
+          <div class="nodal-item">
+            <span class="nodal-icon">🎬</span>
+            <strong>Agencias creativas</strong>
+            <small>El portafolio de la agencia luce cinematográfico y diferenciado</small>
+          </div>
+        </div>
+        <p class="nodal-benefit">✅ <strong>Resultado:</strong> Experiencia cinematográfica. Aumenta el tiempo de navegación y la percepción de calidad de marca.</p>
+      </div>
+    </header>
+    <div class="canvas-area parallax-scene" style="overflow:hidden; min-height:280px; position:relative;">
+      <div class="layer-back" style="position:absolute;inset:0;background:radial-gradient(ellipse 80% 60% at 50% 50%,rgba(16,185,129,0.18),transparent);border-radius:50%;"></div>
+      <div class="layer-mid" style="position:absolute;bottom:20px;left:10%;width:80%;height:3px;background:linear-gradient(90deg,transparent,var(--verde-500),transparent);box-shadow:0 0 20px var(--verde-glow);"></div>
+      <div class="layer-front" style="position:relative;z-index:2;display:flex;flex-direction:column;align-items:center;justify-content:center;height:280px;gap:12px;">
+        <p style="font-size:14px;color:var(--texto-secundario);text-align:center;">Haz scroll mientras observas cómo cada capa se mueve a distinta velocidad</p>
+        <div style="display:flex;gap:24px;align-items:flex-end;">
+          <div style="width:40px;height:80px;background:rgba(16,185,129,0.15);border:1px solid var(--borde);border-radius:8px;"></div>
+          <div style="width:40px;height:120px;background:rgba(16,185,129,0.25);border:1px solid rgba(16,185,129,0.3);border-radius:8px;"></div>
+          <div style="width:40px;height:60px;background:rgba(16,185,129,0.15);border:1px solid var(--borde);border-radius:8px;"></div>
+        </div>
+        <p style="font-size:12px;color:var(--verde-400);margin-top:8px;">← Capas con velocidades distintas →</p>
+      </div>
+    </div>
+  </article>
+</section>
+
+<!-- ================= 3D TILT ================= -->
+<section id="sesion-tilt" class="effect-container">
+  <article class="lab-article">
+    <header class="article-header">
+      <h2>Efecto 3D Tilt · 3D Tilt Effect</h2>
+      <p class="tech-stack">GSAP · rotateX · rotateY · perspective · mousemove</p>
+      <p class="impact-text">💡 Las tarjetas rotan en 3D siguiendo el cursor. El usuario percibe profundidad real, lo que eleva la calidad visual del sitio inmediatamente.</p>
+      <p class="use-case">🎯 Dónde se usa: <strong>Linear</strong>, <strong>Vercel</strong>, <strong>Lottiefiles</strong>, portfolios de diseñadores senior</p>
+
+      <!-- NODAL CASOS DE USO -->
+      <div class="use-case-nodal">
+        <p class="nodal-title">¿En qué tipo de negocio aplica?</p>
+        <div class="nodal-grid">
+          <div class="nodal-item">
+            <span class="nodal-icon">💎</span>
+            <strong>Productos premium</strong>
+            <small>Joyería, electrónica y moda de lujo con presentación de producto en 3D</small>
+          </div>
+          <div class="nodal-item">
+            <span class="nodal-icon">🎨</span>
+            <strong>Agencias creativas</strong>
+            <small>La sección de servicios da sensación de profundidad y sofisticación</small>
+          </div>
+          <div class="nodal-item">
+            <span class="nodal-icon">💼</span>
+            <strong>Portafolio de proyectos</strong>
+            <small>Cada card de proyecto se siente premium e interactivo al explorar</small>
+          </div>
+          <div class="nodal-item">
+            <span class="nodal-icon">👥</span>
+            <strong>Páginas de equipo</strong>
+            <small>Las cards del equipo giran en 3D revelando rol e información</small>
+          </div>
+        </div>
+        <p class="nodal-benefit">✅ <strong>Resultado:</strong> Eleva inmediatamente la percepción de calidad. Los usuarios interactúan más y recuerdan el sitio.</p>
+      </div>
+    </header>
+    <div class="canvas-area" style="display:flex;gap:24px;flex-wrap:wrap;justify-content:center;padding:32px;">
+      <div class="tilt-card" style="width:220px;height:160px;perspective:800px;cursor:pointer;">
+        <div class="tilt-inner" style="width:100%;height:100%;background:var(--bg-card);border:1px solid var(--borde);border-radius:16px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;transition:box-shadow 0.3s;">
+          <i class="bi bi-lightning-charge-fill" style="font-size:28px;color:var(--verde-500);"></i>
+          <strong style="font-size:14px;">GSAP Tilt</strong>
+          <small style="color:var(--texto-secundario);font-size:12px;">Pasa el cursor</small>
+        </div>
+      </div>
+      <div class="tilt-card" style="width:220px;height:160px;perspective:800px;cursor:pointer;">
+        <div class="tilt-inner" style="width:100%;height:100%;background:var(--bg-card);border:1px solid rgba(99,102,241,0.3);border-radius:16px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;transition:box-shadow 0.3s;">
+          <i class="bi bi-box-fill" style="font-size:28px;color:#6366f1;"></i>
+          <strong style="font-size:14px;">3D Profundidad</strong>
+          <small style="color:var(--texto-secundario);font-size:12px;">rotateX + rotateY</small>
+        </div>
+      </div>
+      <div class="tilt-card" style="width:220px;height:160px;perspective:800px;cursor:pointer;">
+        <div class="tilt-inner" style="width:100%;height:100%;background:var(--bg-card);border:1px solid rgba(236,72,153,0.3);border-radius:16px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;transition:box-shadow 0.3s;">
+          <i class="bi bi-stars" style="font-size:28px;color:#ec4899;"></i>
+          <strong style="font-size:14px;">Parallax Inner</strong>
+          <small style="color:var(--texto-secundario);font-size:12px;">transformPerspective</small>
+        </div>
+      </div>
+    </div>
+  </article>
+</section>
+
+
+<!-- ================= CÓDIGO EN VIVO ================= -->
+<section id="sesion-codigo" class="effect-container">
+  <article class="lab-article">
+
+    <header class="article-header">
+      <h2>Editor de Código en Vivo · Live Code Editor</h2>
+      <p class="tech-stack">
+        De la idea al código: animaciones optimizadas con GSAP + ScrollTrigger
+      </p>
+    </header>
+
+    <div class="code-editor">
+
+      <div class="code-header">
+        <div class="code-dots">
+          <span class="dot red"></span>
+          <span class="dot yellow"></span>
+          <span class="dot green"></span>
+        </div>
+        <span class="code-filename">animation.js</span>
+      </div>
+
+      <div class="code-body">
+        <pre class="code-pre"><code id="codeOutput"></code></pre>
+        <span class="code-cursor-blink">▌</span>
+      </div>
+
+    </div>
+
+  </article>
+</section>
+
+<!-- ================================================================ -->
+<!-- CATEGORÍA A: SCROLL & NARRATIVA                                   -->
+<!-- ================================================================ -->
+
+<!-- ================= HORIZONTAL SCROLL ================= -->
+<section id="sesion-hscroll" class="effect-container">
+  <article class="lab-article">
+    <header class="article-header">
+      <h2>Scroll Horizontal · Horizontal Scroll</h2>
+      <p class="tech-stack">GSAP ScrollTrigger · pin · scrub · translateX</p>
+      <p class="impact-text">💡 Convierte el scroll vertical en movimiento horizontal, ideal para galerías y portafolios de alto impacto.</p>
+      <p class="use-case">🎯 Dónde se usa: <strong>Apple</strong> (iPhone feature pages), <strong>Awwwards</strong> sites, agencias creativas, portafolios de diseñadores</p>
+
+      <!-- NODAL CASOS DE USO -->
+      <div class="use-case-nodal">
+        <p class="nodal-title">¿En qué tipo de negocio aplica?</p>
+        <div class="nodal-grid">
+          <div class="nodal-item">
+            <span class="nodal-icon">💼</span>
+            <strong>Portafolio de proyectos</strong>
+            <small>El usuario explora proyectos deslizando, como hojeando un libro de diseño</small>
+          </div>
+          <div class="nodal-item">
+            <span class="nodal-icon">🏆</span>
+            <strong>Casos de éxito</strong>
+            <small>Cada cliente o resultado se presenta en una tarjeta horizontal con impacto</small>
+          </div>
+          <div class="nodal-item">
+            <span class="nodal-icon">👗</span>
+            <strong>Colecciones de moda</strong>
+            <small>La colección se desliza horizontalmente como una pasarela digital</small>
+          </div>
+          <div class="nodal-item">
+            <span class="nodal-icon">📅</span>
+            <strong>Timelines de empresa</strong>
+            <small>Los hitos de la empresa se recorren cronológicamente con scroll</small>
+          </div>
+        </div>
+        <p class="nodal-benefit">✅ <strong>Resultado:</strong> Crea una experiencia de navegación única y memorable que diferencia el sitio y aumenta el engagement.</p>
+      </div>
+    </header>
+    <div class="hscroll-wrapper">
+      <div class="hscroll-track" id="hscrollTrack">
+        <div class="hscroll-card">
+          <div class="hscroll-num">01</div>
+          <i class="bi bi-window-fullscreen"></i>
+          <h4>Landing Page</h4>
+          <p>Diseño visual que convierte visitantes en clientes desde el primer scroll.</p>
+        </div>
+        <div class="hscroll-card">
+          <div class="hscroll-num">02</div>
+          <i class="bi bi-palette-fill"></i>
+          <h4>Branding Digital</h4>
+          <p>Identidad visual coherente para marcas que quieren diferenciarse.</p>
+        </div>
+        <div class="hscroll-card">
+          <div class="hscroll-num">03</div>
+          <i class="bi bi-phone-fill"></i>
+          <h4>App Móvil UI</h4>
+          <p>Interfaces fluidas para apps que ponen la experiencia de usuario primero.</p>
+        </div>
+        <div class="hscroll-card">
+          <div class="hscroll-num">04</div>
+          <i class="bi bi-cart-fill"></i>
+          <h4>E-Commerce</h4>
+          <p>Tiendas online optimizadas para vender con animaciones que guían la compra.</p>
+        </div>
+        <div class="hscroll-card">
+          <div class="hscroll-num">05</div>
+          <i class="bi bi-stars"></i>
+          <h4>Portafolio Premium</h4>
+          <p>Presentación de trabajos con efectos que demuestran nivel técnico alto.</p>
+        </div>
+      </div>
+    </div>
+    <p class="tech-note">↔ Arrastra o hace scroll — el eje cambia de Y a X automáticamente</p>
+  </article>
+</section>
+
+<!-- ================= SVG PATH DRAWING ================= -->
+<section id="sesion-svgpath" class="effect-container">
+  <article class="lab-article">
+    <header class="article-header">
+      <h2>SVG Path Drawing · Animated SVG Path</h2>
+      <p class="tech-stack">SVG stroke-dashoffset · GSAP ScrollTrigger · scrub</p>
+      <p class="impact-text">💡 Transforma un scroll normal en una narrativa visual cinematográfica donde las líneas se dibujan solas.</p>
+      <p class="use-case">🎯 Dónde se usa: <strong>Stripe</strong> (process pages), <strong>Linear</strong>, agencias de branding, timelines de "cómo trabajo"</p>
+
+      <!-- NODAL CASOS DE USO -->
+      <div class="use-case-nodal">
+        <p class="nodal-title">¿En qué tipo de negocio aplica?</p>
+        <div class="nodal-grid">
+          <div class="nodal-item">
+            <span class="nodal-icon">✏️</span>
+            <strong>Logos y branding animado</strong>
+            <small>El logo se dibuja solo al cargar, generando impacto y recordación de marca</small>
+          </div>
+          <div class="nodal-item">
+            <span class="nodal-icon">📋</span>
+            <strong>Procesos paso a paso</strong>
+            <small>La línea que conecta los pasos se dibuja al hacer scroll, guiando la lectura</small>
+          </div>
+          <div class="nodal-item">
+            <span class="nodal-icon">💡</span>
+            <strong>Infografías animadas</strong>
+            <small>Los datos y flujos se revelan progresivamente para mejor comprensión</small>
+          </div>
+          <div class="nodal-item">
+            <span class="nodal-icon">🔗</span>
+            <strong>Páginas "Cómo funciona"</strong>
+            <small>El recorrido del usuario o del producto se narra con líneas que se dibujan</small>
+          </div>
+        </div>
+        <p class="nodal-benefit">✅ <strong>Resultado:</strong> Atrae la atención hacia contenido clave. El proceso se comunica de forma visual y memorable.</p>
+      </div>
+    </header>
+    <div class="canvas-area">
+      <div class="svgpath-container">
+        <svg class="svgpath-svg" viewBox="0 0 600 300" xmlns="http://www.w3.org/2000/svg">
+          <!-- Línea principal -->
+          <path id="mainPath" d="M 30 150 C 150 50, 250 250, 300 150 S 450 50, 570 150" stroke="var(--verde-500)" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+          <!-- Puntos de parada -->
+          <circle class="path-dot" cx="30" cy="150" r="6" fill="var(--verde-500)"/>
+          <circle class="path-dot" cx="300" cy="150" r="6" fill="var(--verde-500)" opacity="0"/>
+          <circle class="path-dot" cx="570" cy="150" r="6" fill="var(--verde-500)" opacity="0"/>
+          <!-- Líneas secundarias decorativas -->
+          <path id="subPath1" d="M 30 150 L 30 200" stroke="var(--verde-400)" stroke-width="1.5" fill="none" stroke-dasharray="4 4"/>
+          <path id="subPath2" d="M 300 150 L 300 200" stroke="var(--verde-400)" stroke-width="1.5" fill="none" stroke-dasharray="4 4" opacity="0"/>
+          <path id="subPath3" d="M 570 150 L 570 200" stroke="var(--verde-400)" stroke-width="1.5" fill="none" stroke-dasharray="4 4" opacity="0"/>
+        </svg>
+        <div class="path-labels">
+          <div class="path-label" id="pl1">
+            <span class="path-step">Idea</span>
+            <small>Definición del proyecto</small>
+          </div>
+          <div class="path-label path-label--mid" id="pl2" style="opacity:0">
+            <span class="path-step">Diseño</span>
+            <small>Wireframes y prototipo</small>
+          </div>
+          <div class="path-label path-label--end" id="pl3" style="opacity:0">
+            <span class="path-step">Deploy</span>
+            <small>Sitio en producción</small>
+          </div>
+        </div>
+      </div>
+    </div>
+  </article>
+</section>
+
+<!-- ================= PIN & REVEAL ================= -->
+<section id="sesion-pin" class="effect-container">
+  <article class="lab-article">
+    <header class="article-header">
+      <h2>Pin & Reveal · Sticky Scroll Reveal</h2>
+      <p class="tech-stack">GSAP ScrollTrigger · pin · scrub · stagger</p>
+      <p class="impact-text">💡 Un elemento queda anclado en pantalla mientras los demás se deslizan a su lado, creando narrativa visual sin salir de la sección.</p>
+      <p class="use-case">🎯 Dónde se usa: <strong>Notion</strong>, <strong>Webflow</strong>, landing pages de SaaS, páginas de features de producto</p>
+
+      <!-- NODAL CASOS DE USO -->
+      <div class="use-case-nodal">
+        <p class="nodal-title">¿En qué tipo de negocio aplica?</p>
+        <div class="nodal-grid">
+          <div class="nodal-item">
+            <span class="nodal-icon">🖥️</span>
+            <strong>Landing de producto SaaS</strong>
+            <small>La pantalla del producto se fija mientras las features cambian al hacer scroll</small>
+          </div>
+          <div class="nodal-item">
+            <span class="nodal-icon">📱</span>
+            <strong>Apps móviles</strong>
+            <small>El mockup del celular se queda fijo mientras las pantallas de la app cambian</small>
+          </div>
+          <div class="nodal-item">
+            <span class="nodal-icon">🎓</span>
+            <strong>Plataformas educativas</strong>
+            <small>El proceso de aprendizaje se muestra paso a paso con el diagrama fijo</small>
+          </div>
+          <div class="nodal-item">
+            <span class="nodal-icon">🔧</span>
+            <strong>Páginas de proceso de trabajo</strong>
+            <small>Cada fase del servicio se revela mientras el resultado final permanece visible</small>
+          </div>
+        </div>
+        <p class="nodal-benefit">✅ <strong>Resultado:</strong> Mantiene el foco del usuario en la información clave. Narrativa visual clara sin salir de la sección.</p>
+      </div>
+    </header>
+    <div class="pin-layout" id="pinLayout">
+      <div class="pin-fixed" id="pinFixed">
+        <div class="pin-screen">
+          <div class="pin-screen-bar">
+            <span></span><span></span><span></span>
+          </div>
+          <div class="pin-screen-content" id="pinScreenContent">
+            <i class="bi bi-window-fullscreen pin-icon"></i>
+            <p class="pin-screen-label">Tu proyecto</p>
+          </div>
+        </div>
+      </div>
+      <div class="pin-steps">
+        <div class="pin-step" data-icon="bi-palette-fill" data-label="Diseño UI">
+          <span class="pin-step-num">01</span>
+          <h4>Diseño a medida</h4>
+          <p>Creo la interfaz visual basada en tu marca, audiencia y objetivos. Cada pixel tiene un propósito.</p>
+        </div>
+        <div class="pin-step" data-icon="bi-code-slash" data-label="Código">
+          <span class="pin-step-num">02</span>
+          <h4>Código limpio</h4>
+          <p>Desarrollo el frontend con HTML, CSS y JavaScript moderno. Sin frameworks innecesarios — solo lo que tu proyecto necesita.</p>
+        </div>
+        <div class="pin-step" data-icon="bi-lightning-charge-fill" data-label="Animaciones">
+          <span class="pin-step-num">03</span>
+          <h4>Animaciones reales</h4>
+          <p>GSAP y ScrollTrigger convierten un sitio estático en una experiencia que captura y retiene la atención.</p>
+        </div>
+        <div class="pin-step" data-icon="bi-rocket-takeoff-fill" data-label="En vivo">
+          <span class="pin-step-num">04</span>
+          <h4>Deploy y entrega</h4>
+          <p>Tu sitio en producción, optimizado para velocidad, SEO y dispositivos móviles. Listo para convertir.</p>
+        </div>
+      </div>
+    </div>
+  </article>
+</section>
+
+<!-- ================================================================ -->
+<!-- CATEGORÍA B: INTERACCIÓN UI                                        -->
+<!-- ================================================================ -->
+
+<!-- ================= SCRAMBLE TEXT ================= -->
+<section id="sesion-scramble" class="effect-container">
+  <article class="lab-article">
+    <header class="article-header">
+      <h2>Scramble Text · Text Scramble Effect</h2>
+      <p class="tech-stack">JavaScript · requestAnimationFrame · charset random</p>
+      <p class="impact-text">💡 Las letras se mezclan caóticamente y se resuelven solas, creando tensión visual que engancha al usuario.</p>
+      <p class="use-case">🎯 Dónde se usa: <strong>Netflix</strong> (títulos de series), <strong>Cyberpunk 2077</strong> site, agencias tech y estudios creativos</p>
+
+      <!-- NODAL CASOS DE USO -->
+      <div class="use-case-nodal">
+        <p class="nodal-title">¿En qué tipo de negocio aplica?</p>
+        <div class="nodal-grid">
+          <div class="nodal-item">
+            <span class="nodal-icon">🔐</span>
+            <strong>Ciberseguridad y tecnología</strong>
+            <small>El efecto de "decodificación" refuerza visualmente la identidad tech de la empresa</small>
+          </div>
+          <div class="nodal-item">
+            <span class="nodal-icon">🎬</span>
+            <strong>Producción de contenido</strong>
+            <small>Títulos que se resuelven solos generan tensión y expectativa en el usuario</small>
+          </div>
+          <div class="nodal-item">
+            <span class="nodal-icon">🏆</span>
+            <strong>Revelación de resultados o awards</strong>
+            <small>El ganador se "descifra" de forma dramática y memorable en pantalla</small>
+          </div>
+          <div class="nodal-item">
+            <span class="nodal-icon">💼</span>
+            <strong>Hero de portafolio tech</strong>
+            <small>El nombre o especialidad aparece decodificándose, dejando claro el perfil</small>
+          </div>
+        </div>
+        <p class="nodal-benefit">✅ <strong>Resultado:</strong> Captura atención inmediata y genera curiosidad. El usuario espera a que el texto se resuelva antes de seguir.</p>
+      </div>
+    </header>
+    <div class="canvas-area">
+      <div class="scramble-demo">
+        <h3 class="scramble-text" data-text="YURANI MARTÍNEZ">YURANI MARTÍNEZ</h3>
+        <h3 class="scramble-text" data-text="FRONTEND DEVELOPER">FRONTEND DEVELOPER</h3>
+        <h3 class="scramble-text" data-text="LABORATORIO DE EFECTOS UI">LABORATORIO DE EFECTOS UI</h3>
+      </div>
+      <button class="btn-demo" id="scrambleBtn">▶ Activar scramble</button>
+    </div>
+  </article>
+</section>
+
+<!-- ================= MARQUEE / TICKER ================= -->
+<section id="sesion-marquee" class="effect-container">
+  <article class="lab-article">
+    <header class="article-header">
+      <h2>Marquee Infinito · Infinite Marquee</h2>
+      <p class="tech-stack">CSS animation · translateX · infinite loop · GSAP opcional</p>
+      <p class="impact-text">💡 Texto corriendo en loop infinito, elegante y moderno. Sin JavaScript para el loop — puro CSS de alto rendimiento.</p>
+      <p class="use-case">🎯 Dónde se usa: <strong>Linear</strong>, <strong>Loom</strong>, <strong>Framer</strong>, agencias de diseño, portfolios de estudio creativo</p>
+
+      <!-- NODAL CASOS DE USO -->
+      <div class="use-case-nodal">
+        <p class="nodal-title">¿En qué tipo de negocio aplica?</p>
+        <div class="nodal-grid">
+          <div class="nodal-item">
+            <span class="nodal-icon">🏅</span>
+            <strong>Logos de clientes y partners</strong>
+            <small>Muestra todos los clientes de forma continua sin ocupar secciones completas</small>
+          </div>
+          <div class="nodal-item">
+            <span class="nodal-icon">🛒</span>
+            <strong>Promociones en e-commerce</strong>
+            <small>Los descuentos y ofertas rotan en el banner sin interrumpir la navegación</small>
+          </div>
+          <div class="nodal-item">
+            <span class="nodal-icon">🔧</span>
+            <strong>Tecnologías y herramientas</strong>
+            <small>El stack técnico desfila mostrando el dominio sin dedicar toda una sección</small>
+          </div>
+          <div class="nodal-item">
+            <span class="nodal-icon">💬</span>
+            <strong>Testimonios y menciones</strong>
+            <small>Las opiniones de clientes corren en loop, transmitiendo confianza social</small>
+          </div>
+        </div>
+        <p class="nodal-benefit">✅ <strong>Resultado:</strong> Muestra mucha información en espacio mínimo. Añade movimiento dinámico sin distraer de la navegación principal.</p>
+      </div>
+    </header>
+    <div class="marquee-section">
+      <!-- Marquee 1 — izquierda -->
+      <div class="marquee-track">
+        <div class="marquee-inner" id="marqueeInner1">
+          <span>Animaciones UI</span><span class="sep">✦</span>
+          <span>GSAP ScrollTrigger</span><span class="sep">✦</span>
+          <span>Frontend Premium</span><span class="sep">✦</span>
+          <span>Diseño Interactivo</span><span class="sep">✦</span>
+          <span>Experiencias Web</span><span class="sep">✦</span>
+          <span>Microinteracciones</span><span class="sep">✦</span>
+          <!-- duplicado para loop -->
+          <span>Animaciones UI</span><span class="sep">✦</span>
+          <span>GSAP ScrollTrigger</span><span class="sep">✦</span>
+          <span>Frontend Premium</span><span class="sep">✦</span>
+          <span>Diseño Interactivo</span><span class="sep">✦</span>
+          <span>Experiencias Web</span><span class="sep">✦</span>
+          <span>Microinteracciones</span><span class="sep">✦</span>
+        </div>
+      </div>
+      <!-- Marquee 2 — derecha (reverse) -->
+      <div class="marquee-track marquee-track--reverse">
+        <div class="marquee-inner marquee-inner--reverse">
+          <span>HTML5 · CSS3 · JS</span><span class="sep">◆</span>
+          <span>Yurani Martínez</span><span class="sep">◆</span>
+          <span>Scroll Reveal</span><span class="sep">◆</span>
+          <span>Parallax</span><span class="sep">◆</span>
+          <span>Partículas</span><span class="sep">◆</span>
+          <span>Glitch · Flip · Tilt</span><span class="sep">◆</span>
+          <!-- duplicado -->
+          <span>HTML5 · CSS3 · JS</span><span class="sep">◆</span>
+          <span>Yurani Martínez</span><span class="sep">◆</span>
+          <span>Scroll Reveal</span><span class="sep">◆</span>
+          <span>Parallax</span><span class="sep">◆</span>
+          <span>Partículas</span><span class="sep">◆</span>
+          <span>Glitch · Flip · Tilt</span><span class="sep">◆</span>
+        </div>
+      </div>
+    </div>
+  </article>
+</section>
+
+<!-- ================= DRAG & DROP ================= -->
+<section id="sesion-drag" class="effect-container">
+  <article class="lab-article">
+    <header class="article-header">
+      <h2>Drag & Drop · Draggable Cards</h2>
+      <p class="tech-stack">HTML5 Drag API · GSAP · DOM reorder</p>
+      <p class="impact-text">💡 El usuario puede reorganizar el contenido arrastrando tarjetas. Esto demuestra nivel de interacción que pocos devs implementan.</p>
+      <p class="use-case">🎯 Dónde se usa: <strong>Trello</strong>, <strong>Notion</strong>, <strong>Linear</strong>, dashboards de proyectos, herramientas de productividad</p>
+
+      <!-- NODAL CASOS DE USO -->
+      <div class="use-case-nodal">
+        <p class="nodal-title">¿En qué tipo de negocio aplica?</p>
+        <div class="nodal-grid">
+          <div class="nodal-item">
+            <span class="nodal-icon">📋</span>
+            <strong>Gestión de proyectos</strong>
+            <small>Las tareas se reordenan por prioridad arrastrando, sin necesidad de menús</small>
+          </div>
+          <div class="nodal-item">
+            <span class="nodal-icon">🛒</span>
+            <strong>Personalización de pedidos</strong>
+            <small>El usuario ordena sus preferencias o productos de forma intuitiva</small>
+          </div>
+          <div class="nodal-item">
+            <span class="nodal-icon">📊</span>
+            <strong>Dashboards internos</strong>
+            <small>Los widgets del panel se reorganizan según las necesidades del usuario</small>
+          </div>
+          <div class="nodal-item">
+            <span class="nodal-icon">🎓</span>
+            <strong>Plataformas educativas</strong>
+            <small>Los módulos o lecciones se reordenan para crear rutas de aprendizaje</small>
+          </div>
+        </div>
+        <p class="nodal-benefit">✅ <strong>Resultado:</strong> Transforma páginas estáticas en herramientas interactivas. Aumenta el engagement y el tiempo de uso.</p>
+      </div>
+    </header>
+    <div class="canvas-area">
+      <p style="color:var(--texto-secundario); font-size:13px; margin-bottom:18px; text-align:center;">
+        <i class="bi bi-grip-vertical"></i> Arrastra las tarjetas para reordenarlas
+      </p>
+      <div class="drag-list" id="dragList">
+        <div class="drag-item" draggable="true" data-id="1">
+          <i class="bi bi-grip-vertical drag-handle"></i>
+          <i class="bi bi-window-fullscreen"></i>
+          <div>
+            <strong>Landing Page</strong>
+            <small>Animaciones de entrada + hero visual</small>
+          </div>
+          <span class="drag-tag">Prioridad Alta</span>
+        </div>
+        <div class="drag-item" draggable="true" data-id="2">
+          <i class="bi bi-grip-vertical drag-handle"></i>
+          <i class="bi bi-cpu-fill"></i>
+          <div>
+            <strong>Web Interactiva</strong>
+            <small>GSAP + ScrollTrigger + microinteracciones</small>
+          </div>
+          <span class="drag-tag drag-tag--blue">En progreso</span>
+        </div>
+        <div class="drag-item" draggable="true" data-id="3">
+          <i class="bi bi-grip-vertical drag-handle"></i>
+          <i class="bi bi-phone-fill"></i>
+          <div>
+            <strong>App Móvil UI</strong>
+            <small>Diseño responsive y animaciones táctiles</small>
+          </div>
+          <span class="drag-tag drag-tag--purple">Pendiente</span>
+        </div>
+        <div class="drag-item" draggable="true" data-id="4">
+          <i class="bi bi-grip-vertical drag-handle"></i>
+          <i class="bi bi-cart-fill"></i>
+          <div>
+            <strong>E-Commerce</strong>
+            <small>Catálogo animado + filtros interactivos</small>
+          </div>
+          <span class="drag-tag drag-tag--green">Completado</span>
+        </div>
+      </div>
+    </div>
+  </article>
+</section>
+
+<!-- ================================================================ -->
+<!-- CATEGORÍA C: TIPOGRAFÍA CREATIVA                                   -->
+<!-- ================================================================ -->
+
+<!-- ================= VARIABLE FONTS ================= -->
+<section id="sesion-varfont" class="effect-container">
+  <article class="lab-article">
+    <header class="article-header">
+      <h2>Variable Fonts · Variable Typography</h2>
+      <p class="tech-stack">CSS font-variation-settings · range input · transición suave</p>
+      <p class="impact-text">💡 Mueve el slider y observa cómo la misma fuente transiciona entre pesos y anchos. Una sola fuente, infinitas posibilidades.</p>
+      <p class="use-case">🎯 Dónde se usa: <strong>Google Fonts</strong> (demos), <strong>Adobe Fonts</strong>, estudios de diseño tipográfico, portafolios creativos</p>
+
+      <!-- NODAL CASOS DE USO -->
+      <div class="use-case-nodal">
+        <p class="nodal-title">¿En qué tipo de negocio aplica?</p>
+        <div class="nodal-grid">
+          <div class="nodal-item">
+            <span class="nodal-icon">🖋️</span>
+            <strong>Estudios de tipografía</strong>
+            <small>Muestra el rango completo de la fuente de forma interactiva en la tienda</small>
+          </div>
+          <div class="nodal-item">
+            <span class="nodal-icon">🎨</span>
+            <strong>Agencias de branding</strong>
+            <small>Presenta opciones tipográficas al cliente de forma visual y comparativa</small>
+          </div>
+          <div class="nodal-item">
+            <span class="nodal-icon">📐</span>
+            <strong>Herramientas de diseño</strong>
+            <small>El control de pesos en tiempo real mejora la usabilidad del editor</small>
+          </div>
+          <div class="nodal-item">
+            <span class="nodal-icon">💼</span>
+            <strong>Portafolios de diseñador gráfico</strong>
+            <small>El slider tipográfico demuestra dominio avanzado de tipografía digital</small>
+          </div>
+        </div>
+        <p class="nodal-benefit">✅ <strong>Resultado:</strong> Reduce peso de fuentes cargadas y añade interactividad visual única que demuestra conocimiento avanzado.</p>
+      </div>
+    </header>
+    <div class="canvas-area">
+      <div class="varfont-demo">
+        <div class="varfont-text" id="varfontText">
+          Diseño que impacta
+        </div>
+        <div class="varfont-controls">
+          <div class="varfont-control">
+            <label>Peso <span id="weightVal">400</span></label>
+            <input type="range" id="fontWeight" min="100" max="900" value="400" step="10" class="varfont-slider">
+          </div>
+          <div class="varfont-control">
+            <label>Ancho <span id="widthVal">100</span></label>
+            <input type="range" id="fontWidth" min="50" max="200" value="100" step="5" class="varfont-slider">
+          </div>
+          <div class="varfont-control">
+            <label>Oblicuo <span id="slantVal">0</span>°</label>
+            <input type="range" id="fontSlant" min="-15" max="0" value="0" step="1" class="varfont-slider">
+          </div>
+        </div>
+        <div class="varfont-presets">
+          <button class="varfont-preset" data-weight="100" data-width="100" data-slant="0">Thin</button>
+          <button class="varfont-preset" data-weight="400" data-width="100" data-slant="0">Regular</button>
+          <button class="varfont-preset" data-weight="800" data-width="100" data-slant="0">Bold</button>
+          <button class="varfont-preset" data-weight="800" data-width="130" data-slant="0">Wide</button>
+          <button class="varfont-preset" data-weight="300" data-width="75" data-slant="-10">Italic</button>
+        </div>
+      </div>
+    </div>
+  </article>
+</section>
+
+<!-- ================= NEON GLOW TEXT ================= -->
+<section id="sesion-neon" class="effect-container">
+  <article class="lab-article">
+    <header class="article-header">
+      <h2>Neon Glow · Glowing Neon Text</h2>
+      <p class="tech-stack">CSS text-shadow · @keyframes · filter blur · animation</p>
+      <p class="impact-text">💡 Texto que pulsa como una señal de neón real. Puro CSS, cero JavaScript, rendimiento óptimo.</p>
+      <p class="use-case">🎯 Dónde se usa: <strong>Spotify</strong> (páginas de artistas), sitios de gaming, marcas nocturnas, festivales, estudios creativos</p>
+
+      <!-- NODAL CASOS DE USO -->
+      <div class="use-case-nodal">
+        <p class="nodal-title">¿En qué tipo de negocio aplica?</p>
+        <div class="nodal-grid">
+          <div class="nodal-item">
+            <span class="nodal-icon">🍹</span>
+            <strong>Bares, discotecas y venues</strong>
+            <small>El ambiente nocturno del local se traslada directamente a la web</small>
+          </div>
+          <div class="nodal-item">
+            <span class="nodal-icon">🎵</span>
+            <strong>Artistas y productores</strong>
+            <small>El nombre del artista pulsa como un letrero de neón, creando identidad visual</small>
+          </div>
+          <div class="nodal-item">
+            <span class="nodal-icon">👟</span>
+            <strong>Moda urbana y streetwear</strong>
+            <small>Las colecciones se presentan con estética de neón que resuena con la audiencia</small>
+          </div>
+          <div class="nodal-item">
+            <span class="nodal-icon">🎮</span>
+            <strong>Gaming y eSports</strong>
+            <small>El equipo o torneo proyecta energía cyberpunk que conecta con gamers</small>
+          </div>
+        </div>
+        <p class="nodal-benefit">✅ <strong>Resultado:</strong> Crea ambiente visual instantáneo sin imágenes pesadas. Identidad de marca memorable y única.</p>
+      </div>
+    </header>
+    <div class="canvas-area neon-canvas">
+      <div class="neon-demo">
+        <div class="neon-text neon-green">FRONTEND</div>
+        <div class="neon-text neon-cyan">DEVELOPER</div>
+        <div class="neon-text neon-pink" style="font-size: clamp(22px, 3.5vw, 42px);">Yurani Martínez</div>
+      </div>
+      <div class="neon-controls">
+        <button class="neon-btn" data-color="green">🟢 Verde</button>
+        <button class="neon-btn" data-color="cyan">🔵 Cyan</button>
+        <button class="neon-btn" data-color="pink">🟣 Rosa</button>
+        <button class="neon-btn" data-color="orange">🟠 Naranja</button>
+      </div>
+    </div>
+  </article>
+</section>
+
+<!-- ================= CURSOR TRAIL ================= -->
+<section id="sesion-trail" class="effect-container">
+  <article class="lab-article">
+    <header class="article-header">
+      <h2>Cursor Trail · Estela de Partículas Animada</h2>
+      <p class="tech-stack">Canvas API · requestAnimationFrame · Optimización de Memoria · Física de Partículas</p>
+      
+      <p class="impact-text">
+        💡 <strong>Interactividad de Alto Nivel:</strong> Este componente transforma la navegación convencional en una experiencia inmersiva. Utilizo cálculos matemáticos y renderizado eficiente para lograr una fluidez total sin afectar el rendimiento (performance) del sitio.
+      </p>
+
+      <!-- NODAL CASOS DE USO (Estrategia de Negocio) -->
+      <div class="use-case-nodal">
+        <p class="nodal-title">¿Cómo aporta valor este desarrollo a un proyecto?</p>
+        <div class="nodal-grid">
+          
+          <div class="nodal-item">
+            <span class="nodal-icon">🚀</span>
+            <strong>Retención y Engagement</strong>
+            <small>Aumenta el tiempo de permanencia del usuario al hacer la interfaz lúdica y reactiva.</small>
+          </div>
+
+          <div class="nodal-item">
+            <span class="nodal-icon">💎</span>
+            <strong>Identidad Visual Premium</strong>
+            <small>Diferencia la marca de la competencia con detalles visuales propios de sitios premiados en Awwwards.</small>
+          </div>
+
+          <div class="nodal-item">
+            <span class="nodal-icon">🎯</span>
+            <strong>Foco y Narrativa Visual</strong>
+            <small>Guía la atención del usuario hacia zonas específicas mediante micro-interacciones sutiles y fluidas.</small>
+          </div>
+
+          <div class="nodal-item">
+            <span class="nodal-icon">⚡</span>
+            <strong>Eficiencia Técnica</strong>
+            <small>Implementado con Canvas para garantizar 60fps, evitando la sobrecarga del procesador o la batería.</small>
+          </div>
+
+        </div>
+        <p class="nodal-benefit">
+          ✅ <strong>Resultado:</strong> Una interfaz que se siente "viva" y profesional, elevando el estándar de cualquier producto digital.
+        </p>
+      </div>
+    </header>
+
+    <!-- ÁREA DE INTERACCIÓN -->
+    <div class="canvas-area trail-area" id="trailArea">
+      <canvas id="trailCanvas"></canvas>
+      <div class="trail-text">
+        <p>Interactúa con el área de diseño</p>
+        <small>El sistema calcula la velocidad y fricción en tiempo real</small>
+      </div>
+      <div class="trail-controls">
+        <button class="trail-btn active" data-mode="spark">✦ Chispas</button>
+        <button class="trail-btn" data-mode="dots">● Puntos</button>
+        <button class="trail-btn" data-mode="line">— Línea</button>
+        <button class="trail-btn" data-mode="lusion">💪 Malla elástica</button>
+        <button class="trail-btn" data-mode="mesh">🌐 Red</button>
+      </div>
+    </div>
+  </article>
+</section>
+
+
+<!-- ================================================================ -->
+<!-- CATEGORÍA D: EFECTOS VISUALES AVANZADOS                           -->
+<!-- ================================================================ -->
+
+<!-- ================= SKELETON LOADING ================= -->
+<section id="sesion-skeleton" class="effect-container">
+  <article class="lab-article">
+    <header class="article-header">
+      <h2>Skeleton Loading · Shimmer Loading Screen</h2>
+      <p class="tech-stack">CSS @keyframes · linear-gradient · shimmer · opacity</p>
+      <p class="impact-text">💡 En lugar de un spinner genérico, el usuario ve la forma exacta del contenido cargándose — percepción de velocidad superior.</p>
+      <p class="use-case">🎯 Dónde se usa: <strong>Facebook</strong>, <strong>LinkedIn</strong>, <strong>YouTube</strong>, <strong>Airbnb</strong> — todos usan skeleton en sus feeds y búsquedas</p>
+
+      <!-- NODAL CASOS DE USO -->
+      <div class="use-case-nodal">
+        <p class="nodal-title">¿En qué tipo de negocio aplica?</p>
+        <div class="nodal-grid">
+          <div class="nodal-item">
+            <span class="nodal-icon">🛒</span>
+            <strong>Tienda online</strong>
+            <small>El catálogo muestra esqueletos mientras carga, evitando la sensación de página rota</small>
+          </div>
+          <div class="nodal-item">
+            <span class="nodal-icon">📊</span>
+            <strong>Dashboards y paneles</strong>
+            <small>Los datos en tiempo real cargan con shimmer, manteniendo la interfaz coherente</small>
+          </div>
+          <div class="nodal-item">
+            <span class="nodal-icon">📰</span>
+            <strong>Blogs y noticias</strong>
+            <small>El feed de artículos se carga progresivamente sin saltos de layout</small>
+          </div>
+          <div class="nodal-item">
+            <span class="nodal-icon">🏠</span>
+            <strong>Plataformas de reservas</strong>
+            <small>Los resultados de búsqueda se cargan de forma fluida y predecible</small>
+          </div>
+        </div>
+        <p class="nodal-benefit">✅ <strong>Resultado:</strong> El usuario percibe el sitio como más rápido aunque el tiempo de carga sea el mismo. Reduce abandono en carga.</p>
+      </div>
+    </header>
+    <div class="canvas-area">
+      <div class="skeleton-demo" id="skeletonDemo">
+        <!-- Estado skeleton -->
+        <div class="skeleton-card" id="skCard">
+          <div class="skeleton-thumb shimmer"></div>
+          <div class="skeleton-body">
+            <div class="skeleton-line shimmer" style="width:70%"></div>
+            <div class="skeleton-line shimmer" style="width:90%"></div>
+            <div class="skeleton-line shimmer" style="width:55%"></div>
+            <div class="skeleton-meta">
+              <div class="skeleton-avatar shimmer"></div>
+              <div style="flex:1">
+                <div class="skeleton-line shimmer" style="width:60%; margin-bottom:6px"></div>
+                <div class="skeleton-line shimmer" style="width:40%"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Estado cargado (oculto al inicio) -->
+        <div class="loaded-card" id="loadedCard" style="display:none">
+          <div class="loaded-thumb"><i class="bi bi-image-fill"></i></div>
+          <div class="loaded-body">
+            <h4>Diseño de Landing Page Premium</h4>
+            <p>Animaciones GSAP + ScrollTrigger + hero visual impactante para captar clientes desde el primer segundo.</p>
+            <div class="loaded-meta">
+              <div class="loaded-avatar">YM</div>
+              <div>
+                <strong>Yurani Martínez</strong>
+                <small>Frontend Developer</small>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div style="text-align:center; margin-top:20px; display:flex; gap:12px; justify-content:center; flex-wrap:wrap;">
+        <button class="btn-demo" id="skeletonReload">⟳ Simular carga</button>
+      </div>
+    </div>
+  </article>
+</section>
+
+<!-- ================= LIQUID BLOB HOVER ================= -->
+<section id="sesion-liquid" class="effect-container">
+  <article class="lab-article">
+    <header class="article-header">
+      <h2>Liquid Blob · Liquid Button Effect</h2>
+      <p class="tech-stack">CSS border-radius animation · clip-path · pseudo-element · GSAP</p>
+      <p class="impact-text">💡 El botón reacciona como si fuera un fluido — la forma se deforma y el fill "sube" al pasar el cursor. Efecto de alto impacto en conversión.</p>
+      <p class="use-case">🎯 Dónde se usa: <strong>Stripe</strong>, <strong>Vercel</strong>, CTAs premium de landing pages, sitios de agencias de UX/UI</p>
+
+      <!-- NODAL CASOS DE USO -->
+      <div class="use-case-nodal">
+        <p class="nodal-title">¿En qué tipo de negocio aplica?</p>
+        <div class="nodal-grid">
+          <div class="nodal-item">
+            <span class="nodal-icon">💆</span>
+            <strong>Spa, bienestar y salud</strong>
+            <small>Las formas orgánicas comunican calma, fluidez y experiencia premium</small>
+          </div>
+          <div class="nodal-item">
+            <span class="nodal-icon">🍃</span>
+            <strong>Productos naturales y ecológicos</strong>
+            <small>La estética líquida refuerza la identidad orgánica y natural de la marca</small>
+          </div>
+          <div class="nodal-item">
+            <span class="nodal-icon">🔬</span>
+            <strong>Biotecnología y ciencias</strong>
+            <small>El movimiento celular y fluido conecta visualmente con el campo</small>
+          </div>
+          <div class="nodal-item">
+            <span class="nodal-icon">🎯</span>
+            <strong>CTAs de alto impacto</strong>
+            <small>El botón con efecto líquido genera más clics que botones estáticos convencionales</small>
+          </div>
+        </div>
+        <p class="nodal-benefit">✅ <strong>Resultado:</strong> Movimiento orgánico y premium sin imágenes ni videos. Aumenta la tasa de clic en botones CTA.</p>
+      </div>
+    </header>
+    <div class="canvas-area">
+      <div class="liquid-grid">
+        <button class="liquid-btn liquid-btn--primary">
+          <span class="liquid-fill"></span>
+          <span class="liquid-text">Contratar ahora</span>
+        </button>
+        <button class="liquid-btn liquid-btn--outline">
+          <span class="liquid-fill"></span>
+          <span class="liquid-text">Ver portafolio</span>
+        </button>
+        <button class="liquid-btn liquid-btn--ghost">
+          <span class="liquid-fill"></span>
+          <span class="liquid-text">Descargar CV</span>
+        </button>
+      </div>
+      <p style="color:var(--texto-secundario); font-size:13px; text-align:center; margin-top:20px;">
+        Pasa el cursor sobre cada botón — cada uno tiene una variante de efecto diferente
+      </p>
+    </div>
+  </article>
+</section>
+
+<!-- ================= MODAL PREMIUM ================= -->
+<section id="sesion-modal" class="effect-container">
+  <article class="lab-article">
+    <header class="article-header">
+      <h2>Modal Premium · Animated Premium Modal</h2>
+      <p class="tech-stack">GSAP fromTo · backdrop-filter blur · scale · CSS variables</p>
+      <p class="impact-text">💡 Un modal bien animado duplica la percepción de calidad del sitio. El blur del fondo mantiene el contexto sin distraer.</p>
+      <p class="use-case">🎯 Dónde se usa: <strong>Linear</strong>, <strong>Vercel</strong>, <strong>GitHub</strong>, confirmaciones críticas, formularios de contacto premium, CTAs de SaaS</p>
+
+      <!-- NODAL CASOS DE USO -->
+      <div class="use-case-nodal">
+        <p class="nodal-title">¿En qué tipo de negocio aplica?</p>
+        <div class="nodal-grid">
+          <div class="nodal-item">
+            <span class="nodal-icon">📬</span>
+            <strong>Formulario de contacto</strong>
+            <small>Se abre sin salir de la página, manteniendo el contexto y reduciendo fricción</small>
+          </div>
+          <div class="nodal-item">
+            <span class="nodal-icon">👁️</span>
+            <strong>Vista previa de producto</strong>
+            <small>El usuario ve detalles ampliados sin perder su posición en el catálogo</small>
+          </div>
+          <div class="nodal-item">
+            <span class="nodal-icon">✅</span>
+            <strong>Confirmaciones de acción</strong>
+            <small>Eliminar, comprar o suscribir se confirman con un modal claro y animado</small>
+          </div>
+          <div class="nodal-item">
+            <span class="nodal-icon">💌</span>
+            <strong>Captura de leads</strong>
+            <small>El modal de newsletter aparece en el momento justo, sin interrumpir la experiencia</small>
+          </div>
+        </div>
+        <p class="nodal-benefit">✅ <strong>Resultado:</strong> Mantiene al usuario en la página, reduciendo abandonos hasta un 25% y mejorando la tasa de conversión.</p>
+      </div>
+    </header>
+    <div class="canvas-area" style="text-align:center">
+      <div style="display:flex; gap:16px; justify-content:center; flex-wrap:wrap">
+        <button class="btn-demo" onclick="openPremiumModal('default')">
+          <i class="bi bi-window"></i> Modal estándar
+        </button>
+        <button class="btn-demo" onclick="openPremiumModal('success')">
+          <i class="bi bi-check-circle-fill"></i> Modal éxito
+        </button>
+        <button class="btn-demo" onclick="openPremiumModal('form')">
+          <i class="bi bi-envelope-fill"></i> Modal formulario
+        </button>
+      </div>
+      <p style="color:var(--texto-secundario); font-size:13px; margin-top:16px;">
+        Cada variante tiene animación de entrada, backdrop blur y cierre con ESC o click afuera
+      </p>
+    </div>
+  </article>
+</section>
+
+<!-- MODAL PREMIUM (overlay) -->
+<!-- ================= CONTACT MODAL (openModal) ================= -->
+<div id="contactModal" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.7);z-index:9999;align-items:center;justify-content:center;backdrop-filter:blur(6px);" onclick="if(event.target===this)closeModal()">
+  <div style="background:#0f172a;border:1px solid rgba(16,185,129,0.3);border-radius:20px;padding:36px;max-width:420px;width:90%;position:relative;">
+    <button onclick="closeModal()" style="position:absolute;top:14px;right:16px;background:none;border:none;color:#94a3b8;font-size:22px;cursor:pointer;line-height:1;">×</button>
+    <div style="font-size:2.5rem;text-align:center;margin-bottom:12px;">💬</div>
+    <h3 style="text-align:center;margin:0 0 8px;font-size:1.3rem;">¿Hablamos?</h3>
+    <p id="serviceName" style="text-align:center;color:#94a3b8;font-size:14px;margin:0 0 24px;"></p>
+    <a id="whatsappBtn" href="#" target="_blank" rel="noopener"
+       style="display:flex;align-items:center;justify-content:center;gap:10px;background:#22c55e;color:#fff;border-radius:12px;padding:14px 20px;font-weight:700;font-size:15px;text-decoration:none;transition:all 0.2s;"
+       onmouseover="this.style.background='#16a34a';this.style.transform='translateY(-2px)'"
+       onmouseout="this.style.background='#22c55e';this.style.transform='translateY(0)'">
+      <i class="bi bi-whatsapp" style="font-size:1.3rem;"></i> Abrir WhatsApp
+    </a>
+    <button onclick="closeModal()" style="display:block;width:100%;margin-top:12px;padding:10px;background:transparent;border:1px solid rgba(255,255,255,0.1);border-radius:10px;color:#94a3b8;cursor:pointer;font-size:14px;transition:all 0.2s;" onmouseover="this.style.borderColor='rgba(255,255,255,0.3)'" onmouseout="this.style.borderColor='rgba(255,255,255,0.1)'">Cerrar</button>
+  </div>
+</div>
+
+<div id="premiumModal" class="premium-modal-overlay" style="display:none">
+  <div class="premium-modal-box" id="premiumModalBox">
+    <button class="premium-modal-close" id="premiumModalClose" aria-label="Cerrar">
+      <i class="bi bi-x-lg"></i>
+    </button>
+    <div id="premiumModalContent"></div>
+  </div>
+</div>
+
+<!-- ==========================================================
+CATÁLOGO UX DE FORMULARIOS+ DESCRIPCIÓN DE USO
+========================================================== -->
+<div class="section-header" style="text-align: center; margin-bottom: 50px;">
+  <h2 style="font-size: 2.5rem; font-weight: 800; background: linear-gradient(to right, #8b5cf6, #3b82f6); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">
+    Catálogo de Formularios · Form Lab
+  </h2>
+  <p style="color: #94a3b8; font-size: 1.1rem; max-width: 600px; margin: 10px auto;">
+    Explora nuestras soluciones de interacción diseñadas para mejorar la tasa de respuesta y la confianza del usuario.
+  </p>
+</div>
+
+<section id="sesion-formularios" class="form-lab forms-showcase">
+
+  <!-- 1 PERFIL -->
+  <article class="form-card" data-type="profile">
+    <header class="card-header">
+      <h3>👤 Perfil de Usuario</h3>
+      <span class="use-tag">Registro básico</span>
+    </header>
+    <p class="hero-copy">Crea tu identidad digital fácilmente.</p>
+    <p class="card-description">Se utiliza para registrar información personal del usuario, crear perfiles en apps, redes sociales o plataformas.</p>
+    <form onsubmit="return false;">
+      <input type="text" id="lab-nombre" placeholder="Nombre completo" required>
+      <input type="number" id="lab-edad" placeholder="Edad" min="1" max="120">
+      <input type="text" id="lab-ciudad" placeholder="Ciudad">
+      <button type="button" onclick="
+        const n = document.getElementById('lab-nombre');
+        if (!n.value.trim()) { n.style.borderColor='#ef4444'; n.focus(); return; }
+        n.style.borderColor='';
+        showToast('✅ Perfil guardado — ' + n.value.trim());
+      ">Guardar perfil</button>
+    </form>
+  </article>
+
+  <!-- 2 CONTACTO -->
+  <article class="form-card" data-type="contact">
+    <header class="card-header">
+      <h3>📩 Formulario de Contacto</h3>
+      <span class="use-tag">Soporte / Leads</span>
+    </header>
+    <p class="hero-copy">Conecta con nosotros en segundos.</p>
+    <p class="card-description">Se usa para recibir mensajes, solicitudes, soporte técnico o captar clientes potenciales desde una web.</p>
+    <form onsubmit="return false;">
+      <input type="text" id="lab-cnombre" placeholder="Tu nombre" required>
+      <input type="email" id="lab-cemail" placeholder="Correo electrónico" required>
+      <textarea id="lab-cmsg" placeholder="Escribe tu mensaje" required></textarea>
+      <button type="button" onclick="
+        const n=document.getElementById('lab-cnombre'),
+              e=document.getElementById('lab-cemail'),
+              m=document.getElementById('lab-cmsg');
+        let ok=true;
+        [n,e,m].forEach(f=>{ f.style.borderColor = f.value.trim() ? '' : '#ef4444'; if(!f.value.trim()) ok=false; });
+        if(e.value && !e.value.includes('@')) { e.style.borderColor='#ef4444'; ok=false; }
+        if(!ok) return;
+        showToast('📩 Mensaje enviado — te respondemos pronto');
+        n.value=''; e.value=''; m.value='';
+      ">Enviar mensaje</button>
+    </form>
+  </article>
+
+  <!-- 3 LOGIN -->
+  <article class="form-card" data-type="security">
+    <header class="card-header">
+      <h3>🔐 Inicio de Sesión</h3>
+      <span class="use-tag">Acceso seguro</span>
+    </header>
+    <p class="hero-copy">Ingresa de forma rápida y segura.</p>
+    <p class="card-description">Se utiliza para autenticar usuarios y permitir acceso a sistemas privados, paneles o cuentas personales.</p>
+    <form onsubmit="return false;">
+      <input type="text" id="lab-user" placeholder="Usuario" required>
+      <input type="password" id="lab-pass" placeholder="Contraseña" required>
+      <button type="button" onclick="
+        const u=document.getElementById('lab-user'),
+              p=document.getElementById('lab-pass');
+        let ok=true;
+        [u,p].forEach(f=>{ f.style.borderColor = f.value.trim() ? '' : '#ef4444'; if(!f.value.trim()) ok=false; });
+        if(!ok) return;
+        showToast('🔓 Sesión iniciada como ' + u.value.trim());
+        u.value=''; p.value='';
+      ">Ingresar</button>
+    </form>
+  </article>
+
+  <!-- 4 PAGO -->
+  <article class="form-card" data-type="payment">
+    <header class="card-header">
+      <h3>💳 Pago Seguro</h3>
+      <span class="use-tag">Checkout</span>
+    </header>
+    <p class="hero-copy">Compra fácil, paga con confianza.</p>
+    <p class="card-description">Se utiliza en tiendas online para procesar pagos, suscripciones, compras o reservas digitales.</p>
+    <form onsubmit="return false;">
+      <input type="text" id="lab-card" placeholder="Número de tarjeta" maxlength="19" oninput="this.value=this.value.replace(/\D/g,'').replace(/(.{4})/g,'$1 ').trim()">
+      <input type="text" id="lab-exp" placeholder="MM/AA" maxlength="5" oninput="this.value=this.value.replace(/\D/g,'').replace(/^(.{2})(.)/,'$1/$2')">
+      <input type="text" id="lab-cvv" placeholder="CVV" maxlength="3" oninput="this.value=this.value.replace(/\D/g,'')">
+      <input type="text" id="lab-titular" placeholder="Titular">
+      <button type="button" onclick="
+        const c=document.getElementById('lab-card');
+        if(c.value.replace(/\s/g,'').length < 16){ c.style.borderColor='#ef4444'; showToast('❌ Número de tarjeta inválido'); return; }
+        c.style.borderColor='';
+        showToast('💳 Pago procesado correctamente');
+      ">Pagar ahora</button>
+    </form>
+  </article>
+
+  <!-- 5 MULTISTEP -->
+  <article class="form-card" data-type="process">
+    <header class="card-header">
+      <h3>🧾 Registro por Pasos</h3>
+      <span class="use-tag">Onboarding</span>
+    </header>
+    <p class="hero-copy">Paso a paso sin complicaciones.</p>
+    <p class="card-description">Se usa cuando el formulario tiene muchos datos y se desea dividir el proceso para mejorar experiencia y conversión.</p>
+    <form onsubmit="return false;" id="lab-multistep">
+      <div class="progress-line">
+        <span class="active" id="ms-dot-1"></span>
+        <span id="ms-dot-2"></span>
+        <span id="ms-dot-3"></span>
+      </div>
+      <div class="step step-1" id="ms-step-1">
+        <input type="text" id="ms-name" placeholder="¿Cómo te llamas?">
+      </div>
+      <div class="step step-2" id="ms-step-2" style="display:none;">
+        <input type="text" id="ms-goal" placeholder="¿Cuál es tu objetivo?">
+      </div>
+      <div class="step step-3" id="ms-step-3" style="display:none;">
+        <input type="email" id="ms-email" placeholder="Correo electrónico">
+      </div>
+      <button type="button" id="ms-btn" onclick="
+        const steps=['ms-step-1','ms-step-2','ms-step-3'];
+        const dots=['ms-dot-1','ms-dot-2','ms-dot-3'];
+        const btn=document.getElementById('ms-btn');
+        const current=steps.findIndex(s=>document.getElementById(s).style.display!=='none');
+        if(current<2){
+          document.getElementById(steps[current]).style.display='none';
+          document.getElementById(steps[current+1]).style.display='';
+          document.getElementById(dots[current+1]).classList.add('active');
+          btn.textContent=current===1?'Finalizar':'Continuar';
+        } else {
+          const e=document.getElementById('ms-email');
+          if(e.value&&!e.value.includes('@')){ e.style.borderColor='#ef4444'; return; }
+          showToast('🎉 Registro completado — bienvenido ' + (document.getElementById('ms-name').value||''));
+          steps.forEach((s,i)=>{ document.getElementById(s).style.display=i===0?'':'none'; });
+          dots.forEach(d=>document.getElementById(d).classList.remove('active'));
+          document.getElementById('ms-dot-1').classList.add('active');
+          document.getElementById('ms-name').value='';
+          document.getElementById('ms-goal').value='';
+          e.value=''; e.style.borderColor='';
+          btn.textContent='Continuar';
+        }
+      ">Continuar</button>
+    </form>
+  </article>
+
+  <!-- 6 SETTINGS -->
+  <article class="form-card" data-type="settings">
+    <header class="card-header">
+      <h3>⚙️ Configuración</h3>
+      <span class="use-tag">Preferencias</span>
+    </header>
+    <p class="hero-copy">Personaliza tu experiencia.</p>
+    <p class="card-description">Se utiliza para cambiar idioma, privacidad, notificaciones y opciones del sistema.</p>
+    <form onsubmit="return false;">
+      <select id="lab-lang">
+        <option value="">Idioma</option>
+        <option>Español</option>
+        <option>English</option>
+        <option>Português</option>
+      </select>
+      <select id="lab-notif">
+        <option value="">Notificaciones</option>
+        <option>Activadas</option>
+        <option>Desactivadas</option>
+      </select>
+      <select id="lab-priv">
+        <option value="">Privacidad</option>
+        <option>Público</option>
+        <option>Privado</option>
+      </select>
+      <button type="button" onclick="
+        const l=document.getElementById('lab-lang').value,
+              n=document.getElementById('lab-notif').value;
+        if(!l||!n){ showToast('❌ Selecciona todas las opciones'); return; }
+        showToast('⚙️ Configuración guardada — Idioma: ' + l);
+      ">Guardar cambios</button>
+    </form>
+  </article>
+
+</section>
+
+<!-- ================================================================
+     LAB: CATÁLOGO DE FOOTERS
+     Agrupados por estilo: Minimalistas · Visuales · Corporativos
+================================================================ -->
+<section id="lab-footers" class="footer-showcase">
+
+  <header class="section-header">
+    <h2 class="title-main">Catálogo de Footers · Footer Lab</h2>
+    <p class="subtitle">
+      9 estilos listos para usar — minimalistas, visuales y corporativos.
+      Cada footer tiene efectos únicos de hover y partículas.
+    </p>
+  </header>
+
+  <!-- ── GRUPO 1: MINIMALISTAS ────────────────────────── -->
+  <div class="footer-group">
+    <h3 class="footer-group-label">
+      <i class="bi bi-circle"></i> Minimalistas
+    </h3>
+
+    <div class="footer-grid">
+
+      <!-- 1. MINIMAL -->
+      <footer class="footer-card footer-minimal" id="footer-minimal" aria-label="Footer estilo Minimal">
+        <div class="footer-container">
+          <div class="brand">
+            <h3>TuMarca</h3>
+            <p>Diseño simple y limpio para negocios modernos.</p>
+          </div>
+          <nav class="links" aria-label="Navegación footer minimal">
+            <a href="#hero">Inicio</a>
+            <a href="#servicios">Servicios</a>
+            <a href="#sesion-form">Contacto</a>
+          </nav>
+          <div class="social" aria-label="Redes sociales">
+            <a href="https://facebook.com" target="_blank" rel="noopener" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+            <a href="https://instagram.com" target="_blank" rel="noopener" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+            <a href="https://wa.me/573147470060" target="_blank" rel="noopener" aria-label="WhatsApp"><i class="bi bi-whatsapp"></i></a>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p>© 2026 TuMarca · Todos los derechos reservados</p>
+        </div>
+      </footer>
+
+      <!-- 2. GLASS -->
+      <footer class="footer-card footer-glass" id="footer-glass" aria-label="Footer estilo Glass">
+        <div class="footer-container">
+          <div class="brand">
+            <h3>Portfolio</h3>
+            <p>Diseñadora UI / UX Frontend</p>
+          </div>
+          <nav class="links" aria-label="Navegación footer glass">
+            <a href="#portafolio">Proyectos</a>
+            <a href="#sobre-mi">Sobre mí</a>
+            <a href="#sesion-form">Contacto</a>
+          </nav>
+          <div class="social" aria-label="Redes sociales">
+            <a href="https://behance.net" target="_blank" rel="noopener" aria-label="Behance"><i class="bi bi-behance"></i></a>
+            <a href="https://dribbble.com" target="_blank" rel="noopener" aria-label="Dribbble"><i class="bi bi-dribbble"></i></a>
+            <a href="https://instagram.com" target="_blank" rel="noopener" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p>© 2026 Yurani Martínez · Frontend Developer</p>
+        </div>
+      </footer>
+
+    </div>
+  </div>
+
+  <!-- ── GRUPO 2: VISUALES ─────────────────────────────── -->
+  <div class="footer-group">
+    <h3 class="footer-group-label">
+      <i class="bi bi-stars"></i> Visuales
+    </h3>
+
+    <div class="footer-grid">
+
+      <!-- 3. GRADIENT -->
+      <footer class="footer-card footer-gradient" id="footer-gradient" aria-label="Footer estilo Gradient">
+        <div class="footer-container">
+          <div class="brand">
+            <h3>StartupX</h3>
+            <p>Impulsamos ideas digitales.</p>
+          </div>
+          <nav class="links" aria-label="Navegación footer gradient">
+            <a href="#servicios">Producto</a>
+            <a href="#portafolio">Portafolio</a>
+            <a href="#sesion-form">Soporte</a>
+          </nav>
+          <div class="contact">
+            <p>hola@startupx.com</p>
+            <p>+57 300 000 0000</p>
+          </div>
+          <div class="social" aria-label="Redes sociales">
+            <a href="https://linkedin.com" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
+            <a href="https://twitter.com" target="_blank" rel="noopener" aria-label="Twitter"><i class="bi bi-twitter-x"></i></a>
+            <a href="https://youtube.com" target="_blank" rel="noopener" aria-label="YouTube"><i class="bi bi-youtube"></i></a>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p>© 2026 StartupX · Impulsando el futuro digital</p>
+        </div>
+      </footer>
+
+      <!-- 4. NEON -->
+      <footer class="footer-card footer-neon" id="footer-neon" aria-label="Footer estilo Neon Cyber">
+        <div class="footer-container">
+          <div class="brand">
+            <h3>CyberTech</h3>
+            <p>Seguridad digital avanzada.</p>
+          </div>
+          <nav class="links" aria-label="Navegación footer neon">
+            <a href="#servicios">Servicios</a>
+            <a href="#sesion-codigo">Blog</a>
+            <a href="#sesion-form">Contacto</a>
+          </nav>
+          <div class="social" aria-label="Redes sociales">
+            <a href="https://discord.com" target="_blank" rel="noopener" aria-label="Discord"><i class="bi bi-discord"></i></a>
+            <a href="https://github.com" target="_blank" rel="noopener" aria-label="GitHub"><i class="bi bi-github"></i></a>
+            <a href="https://telegram.org" target="_blank" rel="noopener" aria-label="Telegram"><i class="bi bi-telegram"></i></a>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p>© 2026 CyberTech · Protección digital de élite</p>
+        </div>
+      </footer>
+
+      <!-- 5. COMMUNITY -->
+      <footer class="footer-card footer-community" id="footer-community" aria-label="Footer estilo Community">
+        <div class="footer-container">
+          <div class="brand">
+            <h3>Creator Hub</h3>
+            <p>Conecta ideas, personas y proyectos.</p>
+            <div class="social" aria-label="Redes sociales">
+              <a href="https://instagram.com" target="_blank" rel="noopener" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+              <a href="https://youtube.com" target="_blank" rel="noopener" aria-label="YouTube"><i class="bi bi-youtube"></i></a>
+              <a href="https://discord.com" target="_blank" rel="noopener" aria-label="Discord"><i class="bi bi-discord"></i></a>
+            </div>
+          </div>
+          <div class="links">
+            <h4>Comunidad</h4>
+            <a href="#sesion-timeline">Eventos</a>
+            <a href="#sesion-galeria">Galería</a>
+            <a href="#sesion-form">Contacto</a>
+          </div>
+          <div class="links">
+            <h4>Recursos</h4>
+            <a href="#stack">Tecnologías</a>
+            <a href="#portafolio">Proyectos</a>
+            <a href="#sesion-estudios">Casos</a>
+          </div>
+        </div>
+        <div class="footer-bottom">© 2026 Creator Hub · Juntos creamos más</div>
+      </footer>
+
+    </div>
+  </div>
+
+  <!-- ── GRUPO 3: CORPORATIVOS ─────────────────────────── -->
+  <div class="footer-group">
+    <h3 class="footer-group-label">
+      <i class="bi bi-briefcase"></i> Corporativos
+    </h3>
+
+    <div class="footer-grid">
+
+      <!-- 6. PREMIUM -->
+      <footer class="footer-card footer-premium" id="footer-premium" aria-label="Footer estilo Premium">
+        <div class="footer-container">
+          <div class="brand">
+            <h3>Empresa Pro</h3>
+            <p>Soluciones SaaS modernas para empresas.</p>
+          </div>
+          <div class="links">
+            <h4>Empresa</h4>
+            <a href="#sobre-mi">Nosotros</a>
+            <a href="#sesion-timeline">Historia</a>
+            <a href="#sesion-codigo">Blog</a>
+          </div>
+          <div class="contact">
+            <h4>Contacto</h4>
+            <p>soporte@empresa.com</p>
+            <p>+57 604 000 0000</p>
+          </div>
+          <div class="social" aria-label="Redes sociales">
+            <a href="https://facebook.com" target="_blank" rel="noopener" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+            <a href="https://instagram.com" target="_blank" rel="noopener" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+            <a href="https://linkedin.com" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
+            <a href="https://youtube.com" target="_blank" rel="noopener" aria-label="YouTube"><i class="bi bi-youtube"></i></a>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p>© 2026 Empresa Pro · <a href="#lab-footers">Privacidad</a> · <a href="#lab-footers">Términos</a></p>
+        </div>
+      </footer>
+
+      <!-- 7. NEWSLETTER -->
+      <footer class="footer-card footer-newsletter" id="footer-newsletter" aria-label="Footer estilo Newsletter">
+        <div class="footer-container">
+          <div class="brand">
+            <h3>GrowthLab</h3>
+            <p>Recibe ideas nuevas cada semana.</p>
+          </div>
+          <div class="contact">
+            <h4>Newsletter</h4>
+            <form class="mini-subscribe" onsubmit="return false;">
+              <input type="email" placeholder="Tu correo" aria-label="Correo electrónico">
+              <button type="button" onclick="showToast('¡Suscripción registrada!')">Suscribirme</button>
+            </form>
+          </div>
+        </div>
+        <div class="footer-bottom">© 2026 GrowthLab · Ideas que impulsan</div>
+      </footer>
+
+      <!-- 8. CORPORATE -->
+      <footer class="footer-card footer-corporate" id="footer-corporate" aria-label="Footer estilo Corporate">
+        <div class="footer-container">
+          <div class="brand">
+            <h3>Nova Group</h3>
+            <p>Soluciones empresariales globales.</p>
+          </div>
+          <div class="links">
+            <h4>Empresa</h4>
+            <a href="#sobre-mi">Nosotros</a>
+            <a href="#sesion-timeline">Carreras</a>
+            <a href="#sesion-form">Prensa</a>
+          </div>
+          <div class="links">
+            <h4>Legal</h4>
+            <a href="#lab-footers">Privacidad</a>
+            <a href="#lab-footers">Términos</a>
+            <a href="#lab-footers">Cookies</a>
+          </div>
+        </div>
+        <div class="footer-bottom">© 2026 Nova Group · Innovación empresarial</div>
+      </footer>
+
+      <!-- 9. APP DOWNLOAD -->
+      <footer class="footer-card footer-app" id="footer-app" aria-label="Footer estilo App Download">
+        <div class="footer-container">
+          <div class="brand">
+            <h3>QuickApp</h3>
+            <p>Todo en tu bolsillo.</p>
+          </div>
+          <div class="links">
+            <h4>Descarga</h4>
+            <a href="https://apps.apple.com" target="_blank" rel="noopener"><i class="bi bi-apple"></i> App Store</a>
+            <a href="https://play.google.com" target="_blank" rel="noopener"><i class="bi bi-google-play"></i> Google Play</a>
+          </div>
+          <div class="social" aria-label="Redes sociales">
+            <a href="https://facebook.com" target="_blank" rel="noopener" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+            <a href="https://instagram.com" target="_blank" rel="noopener" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+            <a href="https://tiktok.com" target="_blank" rel="noopener" aria-label="TikTok"><i class="bi bi-tiktok"></i></a>
+          </div>
+        </div>
+        <div class="footer-bottom">© 2026 QuickApp · Tu vida, más rápido</div>
+      </footer>
+
+    </div>
+  </div>
+
+</section>
+
+<!-- ================================================================
+     TYPEWRITER CON CURSOR
+================================================================ -->
+<section id="sesion-typewriter" class="effect-container">
+  <article class="lab-article">
+    <header class="article-header">
+      <h2>Typewriter con Cursor · Typewriter Effect</h2>
+      <p class="tech-stack">JavaScript · requestAnimationFrame · CSS cursor blink</p>
+      <p class="impact-text">💡 Texto que se escribe y borra automáticamente entre múltiples frases. Ideal para headlines dinámicos que comunican varios mensajes en uno solo.</p>
+      <p class="use-case">🎯 Dónde se usa: <strong>Linear</strong>, <strong>Vercel</strong>, portfolios creativos, hero sections de landing pages, páginas de agencias</p>
+      <div class="use-case-nodal">
+        <p class="nodal-title">¿En qué tipo de negocio aplica?</p>
+        <div class="nodal-grid">
+          <div class="nodal-item"><span class="nodal-icon">🚀</span><strong>Startups y SaaS</strong><small>El hero rota los beneficios clave del producto sin saturar la pantalla</small></div>
+          <div class="nodal-item"><span class="nodal-icon">🎨</span><strong>Agencias creativas</strong><small>Muestra servicios distintos con un solo titular impactante</small></div>
+          <div class="nodal-item"><span class="nodal-icon">👩‍💻</span><strong>Portfolios personales</strong><small>Define tu perfil profesional con múltiples roles o habilidades</small></div>
+          <div class="nodal-item"><span class="nodal-icon">🛍️</span><strong>E-commerce</strong><small>Rota promociones o beneficios del producto de forma llamativa</small></div>
+        </div>
+        <p class="nodal-benefit">✅ <strong>Resultado:</strong> Comunica múltiples mensajes en el mismo espacio. Aumenta el tiempo de atención en el hero en un 40%.</p>
+      </div>
+    </header>
+    <div class="canvas-area typewriter-stage">
+      <p class="typewriter-prefix">Soy una desarrolladora que crea</p>
+      <div class="typewriter-display">
+        <span class="typewriter-text" id="tw-text"></span>
+        <span class="typewriter-cursor" id="tw-cursor">|</span>
+      </div>
+      <div class="tw-phrases" id="tw-chips"></div>
+    </div>
+  </article>
+</section>
+
+<!-- ================================================================
+     RIPPLE / CLICK EFFECT
+================================================================ -->
+<section id="sesion-ripple" class="effect-container">
+  <article class="lab-article">
+    <header class="article-header">
+      <h2>Ripple · Click Effect</h2>
+      <p class="tech-stack">Canvas API · requestAnimationFrame · pointer events</p>
+      <p class="impact-text">💡 Cada clic genera ondas de expansión en el punto exacto de contacto. Retroalimentación visual inmediata que hace la interfaz sentirse viva y responsiva.</p>
+      <p class="use-case">🎯 Dónde se usa: <strong>Google Material Design</strong>, <strong>Android UI</strong>, apps móviles, dashboards interactivos</p>
+      <div class="use-case-nodal">
+        <p class="nodal-title">¿En qué tipo de negocio aplica?</p>
+        <div class="nodal-grid">
+          <div class="nodal-item"><span class="nodal-icon">📱</span><strong>Apps y dashboards</strong><small>Cada interacción confirma visualmente que el sistema respondió</small></div>
+          <div class="nodal-item"><span class="nodal-icon">🎮</span><strong>Gamificación y juegos</strong><small>El feedback visual aumenta la sensación de recompensa en cada acción</small></div>
+          <div class="nodal-item"><span class="nodal-icon">🏫</span><strong>Plataformas educativas</strong><small>Los clics en botones de respuesta se sienten más satisfactorios y claros</small></div>
+          <div class="nodal-item"><span class="nodal-icon">🛒</span><strong>E-commerce</strong><small>El botón "Agregar al carrito" con ripple aumenta la percepción de rapidez</small></div>
+        </div>
+        <p class="nodal-benefit">✅ <strong>Resultado:</strong> Reduce la sensación de latencia. Los usuarios perciben la app hasta un 30% más rápida con feedback visual inmediato.</p>
+      </div>
+    </header>
+    <div class="canvas-area">
+      <div id="ripple-canvas-area">
+        <canvas id="ripple-canvas"></canvas>
+        <p class="ripple-hint" id="ripple-hint">🖱️ Haz clic aquí para ver el efecto</p>
+      </div>
+      <div class="ripple-controls">
+        <button class="ripple-mode-btn active" data-mode="wave">🌊 Onda</button>
+        <button class="ripple-mode-btn" data-mode="burst">💥 Burst</button>
+        <button class="ripple-mode-btn" data-mode="neon">✨ Neón</button>
+        <button class="ripple-mode-btn" data-mode="multi">🎨 Multi-color</button>
+      </div>
+    </div>
+  </article>
+</section>
+
+<!-- ================================================================
+     PALETA DE COLORES EN VIVO
+================================================================ -->
+<section id="sesion-colorpicker" class="effect-container">
+  <article class="lab-article">
+    <header class="article-header">
+      <h2>Paleta de Colores en Vivo · Live Color Palette</h2>
+      <p class="tech-stack">CSS Custom Properties · JavaScript · color-mix()</p>
+      <p class="impact-text">💡 Cambia el color de acento de toda la interfaz en tiempo real. Así es como se construyen sistemas de diseño adaptables y temas personalizables.</p>
+      <p class="use-case">🎯 Dónde se usa: <strong>Figma</strong>, <strong>Framer</strong>, sistemas de diseño enterprise, apps con temas por usuario</p>
+      <div class="use-case-nodal">
+        <p class="nodal-title">¿En qué tipo de negocio aplica?</p>
+        <div class="nodal-grid">
+          <div class="nodal-item"><span class="nodal-icon">🏢</span><strong>SaaS con marca blanca</strong><small>Cada cliente tiene los colores de su empresa sin reescribir CSS</small></div>
+          <div class="nodal-item"><span class="nodal-icon">🎨</span><strong>Herramientas creativas</strong><small>El usuario personaliza su espacio de trabajo con su paleta favorita</small></div>
+          <div class="nodal-item"><span class="nodal-icon">🛍️</span><strong>E-commerce premium</strong><small>El cliente ve los productos en los colores de su preferencia antes de comprar</small></div>
+          <div class="nodal-item"><span class="nodal-icon">📊</span><strong>Dashboards corporativos</strong><small>Cada empresa ve el dashboard con su identidad visual propia</small></div>
+        </div>
+        <p class="nodal-benefit">✅ <strong>Resultado:</strong> Un solo cambio de variable CSS propaga el color a toda la UI. Cero duplicación, máximo impacto.</p>
+      </div>
+    </header>
+    <div class="canvas-area">
+      <div class="color-lab-grid">
+        <div class="color-picker-panel">
+          <h4>🎨 Elige el color de acento</h4>
+          <div class="color-swatch-row" id="cp-swatches"></div>
+          <div class="color-picker-input">
+            <input type="color" id="cp-custom" value="#10b981" title="Color personalizado">
+            <label for="cp-custom">Color personalizado</label>
+          </div>
+          <p class="color-hex-display" id="cp-hex">#10b981</p>
+        </div>
+        <div class="color-preview-panel">
+          <h4 style="margin:0 0 12px;font-size:0.95rem;color:var(--texto-secundario)">Vista previa en tiempo real</h4>
+          <button class="cprev-btn" id="cprev-btn">✦ Botón Principal</button>
+          <div><span class="cprev-badge" id="cprev-badge">Badge activo</span></div>
+          <a class="cprev-link" id="cprev-link">Ver más →</a>
+          <div style="background:rgba(255,255,255,0.05);border-radius:8px;padding:10px;">
+            <div style="display:flex;justify-content:space-between;font-size:12px;color:var(--texto-secundario);margin-bottom:6px;"><span>Progreso del proyecto</span><span id="cprev-pct">65%</span></div>
+            <div style="height:6px;background:rgba(255,255,255,0.06);border-radius:3px;overflow:hidden;"><div class="cprev-bar-fill" id="cprev-bar"></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </article>
+</section>
+
+<!-- ================================================================
+     GRÁFICAS ANIMADAS
+================================================================ -->
+<section id="sesion-charts" class="effect-container">
+  <article class="lab-article">
+    <header class="article-header">
+      <h2>Gráficas Animadas · Animated Charts</h2>
+      <p class="tech-stack">Chart.js · ScrollTrigger · CSS variables · Canvas API</p>
+      <p class="impact-text">💡 Datos que cobran vida al entrar al viewport. Las gráficas animadas comunican información compleja de forma visual e inmediata.</p>
+      <p class="use-case">🎯 Dónde se usa: <strong>Stripe Dashboard</strong>, <strong>Linear</strong>, reportes de marketing, paneles de métricas, portfolios con resultados</p>
+      <div class="use-case-nodal">
+        <p class="nodal-title">¿En qué tipo de negocio aplica?</p>
+        <div class="nodal-grid">
+          <div class="nodal-item"><span class="nodal-icon">📈</span><strong>Agencias de marketing</strong><small>Presenta resultados de campañas con impacto visual en reportes</small></div>
+          <div class="nodal-item"><span class="nodal-icon">🏥</span><strong>Salud y clínicas</strong><small>Estadísticas de pacientes o resultados presentados de forma comprensible</small></div>
+          <div class="nodal-item"><span class="nodal-icon">💼</span><strong>Consultoras y finanzas</strong><small>KPIs e indicadores clave que convencen en presentaciones a clientes</small></div>
+          <div class="nodal-item"><span class="nodal-icon">🎓</span><strong>Plataformas educativas</strong><small>Progreso del estudiante visualizado de forma motivadora</small></div>
+        </div>
+        <p class="nodal-benefit">✅ <strong>Resultado:</strong> Los datos visualizados generan 3× más retención de información que los datos en tabla o texto plano.</p>
+      </div>
+    </header>
+    <div class="canvas-area">
+      <div class="charts-grid" id="charts-grid">
+        <div class="chart-card"><h4>📊 Proyectos por mes</h4><canvas id="chart-bar" height="200"></canvas></div>
+        <div class="chart-card"><h4>📈 Crecimiento de clientes</h4><canvas id="chart-line" height="200"></canvas></div>
+        <div class="chart-card"><h4>🍩 Distribución de servicios</h4><canvas id="chart-doughnut" height="200"></canvas></div>
+        <div class="chart-card"><h4>⭐ Satisfacción de clientes</h4><canvas id="chart-radar" height="200"></canvas></div>
+      </div>
+      <button class="charts-reload-btn" id="charts-reload">🔄 Animar de nuevo</button>
+    </div>
+  </article>
+</section>
+
+<!-- ================================================================
+     COOKIE BANNER
+================================================================ -->
+<section id="sesion-cookie" class="effect-container">
+  <article class="lab-article">
+    <header class="article-header">
+      <h2>Cookie Banner · Consent Banner</h2>
+      <p class="tech-stack">JavaScript · localStorage · CSS transitions · GDPR compliant</p>
+      <p class="impact-text">💡 Banner de consentimiento con animación de entrada suave, opciones de aceptar/rechazar/personalizar y persistencia real. Cumple GDPR y LGPD.</p>
+      <p class="use-case">🎯 Dónde se usa: <strong>Todo sitio web</strong> con analíticas, publicidad o cookies de terceros — es obligatorio en Colombia, Europa y LATAM</p>
+      <div class="use-case-nodal">
+        <p class="nodal-title">¿En qué tipo de negocio aplica?</p>
+        <div class="nodal-grid">
+          <div class="nodal-item"><span class="nodal-icon">⚖️</span><strong>Cualquier negocio online</strong><small>Requisito legal en Colombia bajo la Ley 1581 de Habeas Data</small></div>
+          <div class="nodal-item"><span class="nodal-icon">🛒</span><strong>E-commerce</strong><small>Necesario para usar Meta Pixel, Google Analytics y herramientas de retargeting</small></div>
+          <div class="nodal-item"><span class="nodal-icon">🏢</span><strong>Empresas con clientes en Europa</strong><small>GDPR exige consentimiento explícito antes de cualquier tracking</small></div>
+          <div class="nodal-item"><span class="nodal-icon">📊</span><strong>Blogs y medios</strong><small>Anuncios de AdSense requieren consentimiento activo del usuario</small></div>
+        </div>
+        <p class="nodal-benefit">✅ <strong>Resultado:</strong> Cumplimiento legal garantizado + confianza del usuario. Evita multas de hasta $2.000 SMMLV en Colombia.</p>
+      </div>
+    </header>
+    <div class="canvas-area cookie-demo-area">
+      <div class="cookie-banner" id="cookie-demo-banner">
+        <span class="cookie-icon">🍪</span>
+        <div class="cookie-text">
+          <p><strong>Usamos cookies</strong> para mejorar tu experiencia, analizar el tráfico y personalizar el contenido. Al hacer clic en "Aceptar", consientes el uso de <em>todas</em> las cookies.</p>
+          <button class="cookie-customize" id="cookie-customize-btn">⚙️ Personalizar preferencias</button>
+        </div>
+        <div class="cookie-actions">
+          <button class="cookie-accept" id="cookie-accept-btn">✅ Aceptar todo</button>
+          <button class="cookie-decline" id="cookie-decline-btn">❌ Solo esenciales</button>
+        </div>
+      </div>
+      <div class="cookie-demo-btns">
+        <button class="btn-demo" id="cookie-reset-btn">🔄 Mostrar de nuevo</button>
+        <button class="btn-demo" id="cookie-custom-variant-btn">🎨 Variante compacta</button>
+      </div>
+    </div>
+  </article>
+</section>
+
+<!-- ================================================================
+     NOTIFICATION SYSTEM
+================================================================ -->
+<section id="sesion-notifs" class="effect-container">
+  <article class="lab-article">
+    <header class="article-header">
+      <h2>Sistema de Notificaciones · Notification System</h2>
+      <p class="tech-stack">JavaScript · CSS animations · auto-dismiss · stacking</p>
+      <p class="impact-text">💡 Notificaciones apiladas con auto-cierre, barra de progreso y 5 tipos distintos. Más completo y flexible que un toast simple.</p>
+      <p class="use-case">🎯 Dónde se usa: <strong>GitHub</strong>, <strong>Notion</strong>, <strong>Slack</strong>, dashboards, apps SaaS, paneles de administración</p>
+      <div class="use-case-nodal">
+        <p class="nodal-title">¿En qué tipo de negocio aplica?</p>
+        <div class="nodal-grid">
+          <div class="nodal-item"><span class="nodal-icon">💬</span><strong>Plataformas colaborativas</strong><small>Notifica eventos del equipo sin interrumpir el flujo de trabajo</small></div>
+          <div class="nodal-item"><span class="nodal-icon">🏦</span><strong>Fintech y banca</strong><small>Alertas de transacciones, límites o movimientos en tiempo real</small></div>
+          <div class="nodal-item"><span class="nodal-icon">🛒</span><strong>E-commerce</strong><small>Confirmaciones de pedido, estado de envío y alertas de stock</small></div>
+          <div class="nodal-item"><span class="nodal-icon">📊</span><strong>Dashboards de métricas</strong><small>Alertas automáticas cuando un KPI sube o baja del umbral</small></div>
+        </div>
+        <p class="nodal-benefit">✅ <strong>Resultado:</strong> Comunicación no intrusiva que mantiene al usuario informado sin bloquear su flujo. Reduce el abandono en formularios en un 25%.</p>
+      </div>
+    </header>
+    <div class="canvas-area">
+      <div class="notif-stage">
+        <div class="notif-controls">
+          <p style="font-size:13px;color:var(--texto-secundario);margin:0 0 8px;">Dispara una notificación:</p>
+          <button class="notif-trigger-btn" data-notif="success">✅ <span>Éxito — Guardado correctamente</span></button>
+          <button class="notif-trigger-btn" data-notif="error">❌ <span>Error — Falló la conexión</span></button>
+          <button class="notif-trigger-btn" data-notif="warning">⚠️ <span>Aviso — Sesión por expirar</span></button>
+          <button class="notif-trigger-btn" data-notif="info">ℹ️ <span>Info — Nueva actualización</span></button>
+          <button class="notif-trigger-btn" data-notif="message">💬 <span>Mensaje — Nuevo en inbox</span></button>
+          <button class="btn-demo" id="notif-clear-btn" style="margin-top:8px;font-size:13px;">🗑️ Limpiar todo</button>
+        </div>
+        <div class="notif-stack" id="notif-stack"></div>
+      </div>
+    </div>
+  </article>
+</section>
+
+</main>
+
+<!-- ================= SCRIPTS ================= -->
+
+<!-- GSAP (primero las bases) -->
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollToPlugin.min.js"></script>
+
+<!-- Librerías visuales (después) -->
+<script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/vanta@0.5.24/dist/vanta.clouds.min.js"></script>
+
+<!-- script  -->
+<script src="js/script.js"></script>
+
+<!-- ================= QUICK NAV ================= -->
+<nav id="quick-nav" aria-label="Navegación rápida por secciones">
+  <div id="quick-nav-panel" role="menu">
+
+    <div class="qnav-group-title">Introducción · Intro</div>
+    <a href="#hero" onclick="closeQuickNav()"><i class="bi bi-house"></i> Inicio · Home</a>
+    <a href="#sesion-1" onclick="closeQuickNav()"><i class="bi bi-eye"></i> Entrada · Entrance</a>
+    <a href="#hero-particles" onclick="closeQuickNav()"><i class="bi bi-stars"></i> Partículas · Particles</a>
+    <a href="#sesion-2" onclick="closeQuickNav()"><i class="bi bi-arrow-down-up"></i> Scroll Reveal</a>
+
+    <div class="qnav-group-title">Interacciones · Interactions</div>
+    <a href="#sesion-3" onclick="closeQuickNav()"><i class="bi bi-hand-index"></i> Microinteracciones</a>
+    <a href="#sesion-tilt" onclick="closeQuickNav()"><i class="bi bi-box"></i> Inclinación · 3D Tilt</a>
+    <a href="#sesion-drag" onclick="closeQuickNav()"><i class="bi bi-arrows-move"></i> Arrastrar · Drag & Drop</a>
+    <a href="#sesion-trail" onclick="closeQuickNav()"><i class="bi bi-mouse"></i> Estela · Cursor Trail</a>
+
+    <div class="qnav-group-title">UI / UX</div>
+    <a href="#sesion-tema" onclick="closeQuickNav()"><i class="bi bi-circle-half"></i> Tema · Dark Mode</a>
+    <a href="#sesion-contadores" onclick="closeQuickNav()"><i class="bi bi-123"></i> Contadores · Counters</a>
+    <a href="#sesion-timeline" onclick="closeQuickNav()"><i class="bi bi-clock-history"></i> Línea de tiempo · Timeline</a>
+    <a href="#sesion-form" onclick="closeQuickNav()"><i class="bi bi-envelope"></i> Formulario · Form</a>
+    <a href="#sesion-galeria" onclick="closeQuickNav()"><i class="bi bi-images"></i> Galería · Lightbox</a>
+    <a href="#sesion-skeleton" onclick="closeQuickNav()"><i class="bi bi-layout-text-window"></i> Esqueleto · Skeleton</a>
+    <a href="#sesion-modal" onclick="closeQuickNav()"><i class="bi bi-window"></i> Modal Premium</a>
+
+    <div class="qnav-group-title">Animaciones · Animations</div>
+    <a href="#sesion-parallax" onclick="closeQuickNav()"><i class="bi bi-layers"></i> Paralaje · Parallax</a>
+    <a href="#sesion-hscroll" onclick="closeQuickNav()"><i class="bi bi-arrows-angle-expand"></i> Scroll Horizontal</a>
+    <a href="#sesion-svgpath" onclick="closeQuickNav()"><i class="bi bi-bezier2"></i> Trazo · SVG Path</a>
+    <a href="#sesion-pin" onclick="closeQuickNav()"><i class="bi bi-pin-angle"></i> Fijar · Pin & Reveal</a>
+    <a href="#sesion-scramble" onclick="closeQuickNav()"><i class="bi bi-type"></i> Descifrar · Scramble</a>
+    <a href="#sesion-marquee" onclick="closeQuickNav()"><i class="bi bi-text-paragraph"></i> Banda · Marquee</a>
+
+    <div class="qnav-group-title">Visuales · Visuals</div>
+    <a href="#sesion-glitch" onclick="closeQuickNav()"><i class="bi bi-bug"></i> Glitch</a>
+    <a href="#sesion-flip" onclick="closeQuickNav()"><i class="bi bi-arrow-repeat"></i> Voltear · Flip 3D</a>
+    <a href="#sesion-varfont" onclick="closeQuickNav()"><i class="bi bi-fonts"></i> Tipografía · Var Fonts</a>
+    <a href="#sesion-neon" onclick="closeQuickNav()"><i class="bi bi-lightbulb"></i> Neón · Neon Glow</a>
+    <a href="#sesion-liquid" onclick="closeQuickNav()"><i class="bi bi-droplet"></i> Líquido · Liquid Blob</a>
+
+    <div class="qnav-group-title">Contenido · Content</div>
+    <a href="#stack" onclick="closeQuickNav()"><i class="bi bi-stack"></i> Tecnologías · Stack</a>
+    <a href="#sesion-codigo" onclick="closeQuickNav()"><i class="bi bi-code-slash"></i> Código · Live Code</a>
+    <a href="#portafolio" onclick="closeQuickNav()"><i class="bi bi-briefcase"></i> Portafolio · Portfolio</a>
+    <a href="#servicios" onclick="closeQuickNav()"><i class="bi bi-gear"></i> Servicios · Services</a>
+    <a href="#sesion-formularios" onclick="closeQuickNav()"><i class="bi bi-ui-checks"></i> Lab de Forms</a>
+    <a href="#sesion-typewriter" onclick="closeQuickNav()"><i class="bi bi-keyboard"></i> Typewriter · Cursor</a>
+    <a href="#sesion-ripple" onclick="closeQuickNav()"><i class="bi bi-fullscreen"></i> Ripple · Click Effect</a>
+    <a href="#sesion-colorpicker" onclick="closeQuickNav()"><i class="bi bi-palette"></i> Color Picker · Live</a>
+    <a href="#sesion-charts" onclick="closeQuickNav()"><i class="bi bi-bar-chart"></i> Gráficas · Charts</a>
+    <a href="#sesion-cookie" onclick="closeQuickNav()"><i class="bi bi-shield-check"></i> Cookie Banner</a>
+    <a href="#sesion-notifs" onclick="closeQuickNav()"><i class="bi bi-bell"></i> Notificaciones</a>
+    <a href="#lab-footers" onclick="closeQuickNav()"><i class="bi bi-layout-bottom"></i> Lab de Footers</a>
+
+  </div>
+  <button id="quick-nav-toggle" onclick="toggleQuickNav()" aria-expanded="false" aria-controls="quick-nav-panel">
+    <i class="bi bi-compass" id="qnav-icon"></i> Secciones
+  </button>
+</nav>
+
+<!-- ================= BACK TO TOP ================= -->
+<button id="backToTop" class="back-to-top" aria-label="Volver arriba">
+  <i class="bi bi-arrow-up"></i>
+</button>
+
+<!-- ================= TOAST ================= -->
+<div id="toast" class="toast" role="alert" aria-live="assertive">
+  <i class="bi bi-check-circle-fill"></i>
+  <span id="toast-msg">¡Mensaje enviado!</span>
+</div>
+
+<!-- ================= QUICK NAV SCRIPT ================= -->
+<script>
+  function toggleQuickNav() {
+    const panel = document.getElementById('quick-nav-panel');
+    const icon  = document.getElementById('qnav-icon');
+    const btn   = document.getElementById('quick-nav-toggle');
+    const open  = panel.classList.toggle('open');
+    btn.setAttribute('aria-expanded', open);
+    icon.className = open ? 'bi bi-x-lg' : 'bi bi-compass';
+  }
+  function closeQuickNav() {
+    const panel = document.getElementById('quick-nav-panel');
+    const icon  = document.getElementById('qnav-icon');
+    const btn   = document.getElementById('quick-nav-toggle');
+    panel.classList.remove('open');
+    btn.setAttribute('aria-expanded', 'false');
+    icon.className = 'bi bi-compass';
+  }
+  // Close on outside click
+  document.addEventListener('click', function(e) {
+    const nav = document.getElementById('quick-nav');
+    if (nav && !nav.contains(e.target)) closeQuickNav();
+  });
+</script>
+
+</body>
+</html>
