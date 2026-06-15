@@ -118,6 +118,5 @@ El código puede ser referenciado con atribución. No redistribuir como propio.
 ---
 
 <div align="center">
-  <p>Hecho con 💚 y demasiado café en Medellín, Colombia</p>
   <p><strong>Yurani Martínez · Frontend Developer</strong></p>
 </div>
